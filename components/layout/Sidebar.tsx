@@ -99,7 +99,7 @@ export const Sidebar: FC<SidebarProps> = ({
       </button>
 
       {/* Logo */}
-      <button className="sidebar-logo" onClick={() => navigate('/')}>
+      <button className="sidebar-logo" onClick={() => navigate('/')} aria-label="FAINL — naar startpagina">
         <video
           src="/FAINLANI.mp4"
           autoPlay muted loop playsInline
@@ -155,9 +155,9 @@ export const Sidebar: FC<SidebarProps> = ({
       <div className="sidebar-footer">
         {/* Theme toggle */}
         <div className="sidebar-tooltip-wrap">
-          <button className="flyout-btn" onClick={onToggleTheme} style={{ justifyContent: 'space-between' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              {darkMode ? <Sun style={{ width: 15, height: 15 }} /> : <Moon style={{ width: 15, height: 15 }} />}
+          <button className="flyout-btn flyout-btn--spread" onClick={onToggleTheme}>
+            <span className="flyout-btn__icon-label">
+              {darkMode ? <Sun className="flyout-icon" /> : <Moon className="flyout-icon" />}
               <span>{darkMode ? 'Lichte modus' : 'Donkere modus'}</span>
             </span>
           </button>
@@ -165,7 +165,7 @@ export const Sidebar: FC<SidebarProps> = ({
 
         {/* User */}
         <div className="flyout-trigger">
-          <button className="flyout-btn" onClick={() => setFlyoutOpen(o => !o)} style={{ paddingLeft: 8 }}>
+          <button className="flyout-btn flyout-btn--user" onClick={() => setFlyoutOpen(o => !o)}>
             <span className="user-avatar">
               {userEmail?.charAt(0).toUpperCase() ?? 'G'}
             </span>
@@ -181,29 +181,29 @@ export const Sidebar: FC<SidebarProps> = ({
               <div className="flyout-backdrop" onClick={() => setFlyoutOpen(false)} />
               <div className="flyout-menu">
                 <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/tokens'); }}>
-                  <CreditCard style={{ width: 14, height: 14 }} /> Prijzen
+                  <CreditCard className="flyout-icon" /> Prijzen
                 </button>
                 <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/dashboard'); }}>
-                  <LayoutDashboard style={{ width: 14, height: 14 }} /> Mijn FAINL's
+                  <LayoutDashboard className="flyout-icon" /> Mijn FAINL's
                 </button>
                 <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/cookbook'); }}>
-                  <BookOpen style={{ width: 14, height: 14 }} /> Voorbeeldvragen
+                  <BookOpen className="flyout-icon" /> Voorbeeldvragen
                 </button>
                 <div className="flyout-divider" />
                 <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/faq'); }}>
-                  <HelpCircle style={{ width: 14, height: 14 }} /> FAQ
+                  <HelpCircle className="flyout-icon" /> FAQ
                 </button>
                 <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/contact'); }}>
-                  <Mail style={{ width: 14, height: 14 }} /> Contact
+                  <Mail className="flyout-icon" /> Contact
                 </button>
                 <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/inclusie'); }}>
-                  <Heart style={{ width: 14, height: 14 }} /> Inclusieprogramma
+                  <Heart className="flyout-icon" /> Inclusieprogramma
                 </button>
                 {isLoggedIn && (
                   <>
                     <div className="flyout-divider" />
                     <button className="flyout-item" onClick={() => { setFlyoutOpen(false); onLogout(); }}>
-                      <LogOut style={{ width: 14, height: 14 }} /> Uitloggen
+                      <LogOut className="flyout-icon" /> Uitloggen
                     </button>
                   </>
                 )}

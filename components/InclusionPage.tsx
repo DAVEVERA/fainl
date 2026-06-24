@@ -14,26 +14,13 @@ export const InclusionPage: FC = () => {
 
   const handleRedeem = async () => {
     if (!code.trim()) return;
-    if (!authSession) {
-      navigate('/login');
-      return;
-    }
-
+    if (!authSession) { navigate('/login'); return; }
     setState('loading');
     try {
       const { data, error } = await supabase.rpc('redeem_inclusion_voucher', { p_code: code.trim() });
-      if (error) {
-        setState('error');
-        setResult({ error: error.message });
-        return;
-      }
-      if (data?.success) {
-        setState('success');
-        setResult(data);
-      } else {
-        setState('error');
-        setResult({ error: data?.error || 'Onbekende fout' });
-      }
+      if (error) { setState('error'); setResult({ error: error.message }); return; }
+      if (data?.success) { setState('success'); setResult(data); }
+      else { setState('error'); setResult({ error: data?.error || 'Onbekende fout' }); }
     } catch (err: any) {
       setState('error');
       setResult({ error: err.message || 'Er ging iets mis' });
@@ -47,74 +34,64 @@ export const InclusionPage: FC = () => {
         description="Het FAINL Inclusieprogramma biedt kosteloze toegang tot AI-consensus voor mensen in financieel kwetsbare situaties."
         canonical="/inclusie"
       />
-      <div className="w-full bg-white dark:bg-black pt-8 md:pt-16 pb-16 md:pb-24">
-        <div className="max-w-2xl mx-auto px-4 md:px-6">
+      <div className="incl-page">
+        <div className="incl-page__inner">
 
           {/* Header */}
-          <div className="text-center mb-12 md:mb-16">
-            <div className="w-14 h-14 bg-[var(--action)] flex items-center justify-center mx-auto mb-6" style={{ borderRadius: 'var(--r-lg)' }}>
-              <Heart className="w-7 h-7" style={{ color: 'var(--action-text)' }} />
+          <div className="incl-page__header">
+            <div className="incl-page__icon">
+              <Heart className="incl-page__icon-svg" />
             </div>
-            <h1 style={{ fontFamily: 'var(--f-display)', fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 600, letterSpacing: '-0.03em', color: 'var(--ink)' }}>
-              FAINL Inclusieprogramma
-            </h1>
-            <p style={{ fontSize: '15px', color: 'var(--ink-3)', lineHeight: 1.6, marginTop: '12px', maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
+            <h1 className="incl-page__title">FAINL Inclusieprogramma</h1>
+            <p className="incl-page__subtitle">
               AI-consensus voor iedereen die het nodig heeft, niet alleen voor iedereen die het kan betalen.
             </p>
           </div>
 
-          {/* Info cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+          {/* Stats */}
+          <div className="incl-page__stats">
             {[
               { label: 'Vragen per maand', value: '100' },
               { label: 'Geldigheid', value: '12 maanden' },
               { label: 'Kosten', value: 'Gratis' },
             ].map(({ label, value }) => (
-              <div key={label} style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '16px', textAlign: 'center' }}>
-                <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', fontFamily: 'var(--f-display)' }}>{value}</div>
-                <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--ink-4)', marginTop: '4px' }}>{label}</div>
+              <div key={label} className="incl-page__stat">
+                <div className="incl-page__stat-value">{value}</div>
+                <div className="incl-page__stat-label">{label}</div>
               </div>
             ))}
           </div>
 
           {/* Voucher form */}
           {state === 'success' ? (
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--ok)', borderRadius: 'var(--r-xl)', padding: '32px', textAlign: 'center' }}>
-              <CheckCircle className="w-10 h-10 mx-auto mb-4" style={{ color: 'var(--ok)' }} />
-              <h2 style={{ fontFamily: 'var(--f-display)', fontSize: '20px', fontWeight: 600, color: 'var(--ink)', marginBottom: '8px' }}>
-                Inclusieaccount geactiveerd
-              </h2>
-              <p style={{ fontSize: '14px', color: 'var(--ink-3)', marginBottom: '4px' }}>
+            <div className="incl-page__success">
+              <CheckCircle className="incl-page__success-icon" />
+              <h2 className="incl-page__success-title">Inclusieaccount geactiveerd</h2>
+              <p className="incl-page__success-desc">
                 Je hebt {result?.monthly_limit} vragen per maand tot je beschikking.
               </p>
-              <p style={{ fontSize: '12px', color: 'var(--ink-4)' }}>
+              <p className="incl-page__success-date">
                 Geldig tot: {result?.active_until ? new Date(result.active_until).toLocaleDateString('nl-NL') : '—'}
               </p>
-              <button
-                onClick={() => navigate('/')}
-                className="btn-send"
-                style={{ marginTop: '24px' }}
-              >
+              <button onClick={() => navigate('/')} className="btn-send incl-page__success-cta">
                 Stel je eerste vraag
               </button>
             </div>
           ) : (
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 'var(--r-xl)', padding: '24px 24px 28px' }}>
-              <h2 style={{ fontFamily: 'var(--f-display)', fontSize: '16px', fontWeight: 600, color: 'var(--ink)', marginBottom: '6px' }}>
-                Inclusievoucher inwisselen
-              </h2>
-              <p style={{ fontSize: '13px', color: 'var(--ink-3)', marginBottom: '16px' }}>
+            <div className="incl-page__form-card">
+              <h2 className="incl-page__form-title">Inclusievoucher inwisselen</h2>
+              <p className="incl-page__form-desc">
                 Heb je een vouchercode ontvangen van je hulpverlener, gemeente of maatschappelijke organisatie? Vul deze hieronder in.
               </p>
 
               {!authSession && (
-                <div style={{ background: 'color-mix(in srgb, var(--warn) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--warn) 30%, transparent)', borderRadius: 'var(--r-md)', padding: '12px 16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <AlertCircle className="w-4 h-4 shrink-0" style={{ color: 'var(--warn)' }} />
-                  <span style={{ fontSize: '13px', color: 'var(--ink-2)' }}>Je moet eerst inloggen om een voucher in te wisselen.</span>
+                <div className="incl-page__warning">
+                  <AlertCircle className="incl-page__warning-icon" />
+                  <span>Je moet eerst inloggen om een voucher in te wisselen.</span>
                 </div>
               )}
 
-              <div style={{ display: 'flex', gap: '8px' }}>
+              <div className="incl-page__input-row">
                 <input
                   type="text"
                   value={code}
@@ -122,44 +99,28 @@ export const InclusionPage: FC = () => {
                   placeholder="FAINL-INCL-XXXX-2026"
                   maxLength={25}
                   aria-label="Vouchercode"
-                  style={{
-                    flex: 1,
-                    padding: '10px 14px',
-                    background: 'var(--input-bg)',
-                    border: '1px solid var(--input-border)',
-                    borderRadius: 'var(--r-md)',
-                    fontFamily: 'var(--f-mono)',
-                    fontSize: '14px',
-                    letterSpacing: '0.05em',
-                    color: 'var(--ink)',
-                    outline: 'none',
-                  }}
+                  className="incl-page__code-input"
                   onKeyDown={e => { if (e.key === 'Enter') handleRedeem(); }}
                 />
                 <button
                   className="btn-send"
                   onClick={handleRedeem}
                   disabled={!code.trim() || state === 'loading'}
-                  style={{ whiteSpace: 'nowrap' }}
                 >
                   {state === 'loading' ? 'Bezig...' : 'Activeren'}
                 </button>
               </div>
 
               {state === 'error' && result?.error && (
-                <p style={{ fontSize: '13px', color: 'var(--err)', marginTop: '10px' }}>
-                  {result.error}
-                </p>
+                <p className="incl-page__error">{result.error}</p>
               )}
             </div>
           )}
 
-          {/* About section */}
-          <div style={{ marginTop: '48px' }}>
-            <h3 style={{ fontFamily: 'var(--f-display)', fontSize: '16px', fontWeight: 600, color: 'var(--ink)', marginBottom: '12px' }}>
-              Voor wie is dit programma?
-            </h3>
-            <ul style={{ fontSize: '14px', color: 'var(--ink-2)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}>
+          {/* About */}
+          <div className="incl-page__about">
+            <h3 className="incl-page__about-title">Voor wie is dit programma?</h3>
+            <ul className="incl-page__list">
               {[
                 'Deelnemers aan schuldhulpverlening',
                 'Mensen onder bewindvoering',
@@ -167,13 +128,13 @@ export const InclusionPage: FC = () => {
                 'Mensen met een uitkeringssituatie',
                 'Cliënten van sociale wijkteams en maatschappelijk werk',
               ].map(item => (
-                <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                  <Shield className="w-4 h-4 shrink-0" style={{ color: 'var(--ink-4)', marginTop: '3px' }} />
+                <li key={item} className="incl-page__list-item">
+                  <Shield className="incl-page__list-icon" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <p style={{ fontSize: '13px', color: 'var(--ink-4)', marginTop: '16px' }}>
+            <p className="incl-page__disclaimer">
               Vouchers worden uitsluitend verstrekt door erkende maatschappelijke organisaties. FAINL verwerkt geen inkomensgegevens — de beoordeling vindt plaats bij de verstrekkende instantie.
             </p>
           </div>

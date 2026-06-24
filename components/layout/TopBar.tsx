@@ -15,7 +15,7 @@ export const TopBar: FC<TopBarProps> = ({ onMenuOpen }) => {
       />
       {onMenuOpen && (
         <button onClick={onMenuOpen} className="mobile-topbar-btn" aria-label="Menu openen">
-          <Menu style={{ width: 20, height: 20 }} />
+          <Menu className="mobile-topbar-icon" />
         </button>
       )}
     </div>

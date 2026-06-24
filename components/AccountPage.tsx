@@ -312,6 +312,7 @@ export const AccountPage: FC<AccountPageProps> = ({
                         </div>
                         <button
                           onClick={() => handleToggleNodeInCouncil(node)}
+                          aria-label={isActive ? `${node.name} deactiveren` : `${node.name} activeren`}
                           className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 transition-all ${
                             isActive ? 'text-green-600 dark:text-green-400' : 'text-black/30 dark:text-white/30 hover:text-black dark:hover:text-white'
                           }`}
@@ -321,6 +322,7 @@ export const AccountPage: FC<AccountPageProps> = ({
                         <button
                           onClick={() => handleRemoveNode(node.id)}
                           className="text-black/20 dark:text-white/15 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
+                          aria-label={`${node.name} verwijderen`}
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>

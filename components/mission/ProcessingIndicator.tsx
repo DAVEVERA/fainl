@@ -53,7 +53,7 @@ export const ProcessingIndicator: FC<ProcessingIndicatorProps> = ({
       <div className="processing-indicator__bar" aria-hidden="true">
         <div
           className="processing-indicator__fill"
-          style={{ width: `${pct}%` }}
+          style={{ '--pct': `${pct}%` } as React.CSSProperties}
         />
       </div>
 

@@ -40,7 +40,7 @@ const ScoreBar: FC<{ label: string; value: number; icon: React.ReactNode }> = ({
     <div className="verdict-scores__track">
       <div
         className="verdict-scores__fill"
-        style={{ width: `${value}%` }}
+        style={{ '--pct': `${value}%` } as React.CSSProperties}
       />
     </div>
   </div>
@@ -130,18 +130,18 @@ export const VerdictPanel: FC<VerdictPanelProps> = ({
             <p className="verdict-body__skeleton-label">Victor stelt het oordeel op...</p>
             <div className="verdict-body__skeleton-scores">
               <div className="verdict-body__skeleton-col">
-                <div className="skeleton" style={{ width: 80, height: 12 }} />
-                <div className="skeleton" style={{ width: '100%', height: 8, borderRadius: 99 }} />
+                <div className="skeleton skeleton--label-sm" />
+                <div className="skeleton skeleton--bar" />
               </div>
               <div className="verdict-body__skeleton-col">
-                <div className="skeleton" style={{ width: 96, height: 12 }} />
-                <div className="skeleton" style={{ width: '100%', height: 8, borderRadius: 99 }} />
+                <div className="skeleton skeleton--label-md" />
+                <div className="skeleton skeleton--bar" />
               </div>
             </div>
-            <div className="skeleton" style={{ width: '75%', height: 28, marginBottom: 16 }} />
-            <div className="skeleton" style={{ width: '100%', height: 16, marginBottom: 10 }} />
-            <div className="skeleton" style={{ width: '85%', height: 16, marginBottom: 10 }} />
-            <div className="skeleton" style={{ width: '60%', height: 16 }} />
+            <div className="skeleton skeleton--heading" />
+            <div className="skeleton skeleton--line-full" />
+            <div className="skeleton skeleton--line-85" />
+            <div className="skeleton skeleton--line-60" />
           </div>
         )}
       </div>

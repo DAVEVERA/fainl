@@ -791,13 +791,9 @@ const App: FC = () => {
                   {session.stage === WorkflowStage.ERROR && (
                     <div className="error-center">
                       <div className="error-card animate-fade-in-up">
-                        <AlertTriangle className="w-12 h-12 mx-auto mb-4" style={{ color: 'var(--err)' }} />
-                        <h3 style={{ fontFamily: 'var(--f-display)', fontSize: '1.25rem', fontWeight: 700, marginBottom: 8 }}>
-                          Er ging iets mis
-                        </h3>
-                        <p style={{ fontSize: 14, color: 'var(--ink-3)', marginBottom: 20, lineHeight: 1.6 }}>
-                          {session.error}
-                        </p>
+                        <AlertTriangle className="error-card__icon" />
+                        <h3 className="error-card__title">Er ging iets mis</h3>
+                        <p className="error-card__message">{session.error}</p>
                         <button
                           type="button"
                           onClick={() => setSession({ ...session, stage: WorkflowStage.IDLE })}
