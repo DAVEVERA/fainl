@@ -119,21 +119,21 @@ export const CompareMultiModelPage: FC = () => {
 
       {/* Hero */}
       <section className="max-w-4xl mx-auto px-5 sm:px-8 pt-10 pb-14 md:pt-14 md:pb-20">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--action)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
           Vergelijking — AI Modellen
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
           GPT-4, Claude & Gemini:{' '}
-          <span className="text-[var(--color-accent)]">sterk apart, sterker samen.</span>
+          <span className="text-[var(--ink)]">sterk apart, sterker samen.</span>
         </h1>
         <p className="text-xl sm:text-2xl text-black dark:text-white/80 leading-relaxed max-w-2xl mb-8">
           Elk toonaangevend AI-model heeft systematische sterktes én blinde vlekken.
           Wie ze apart bevraagt, mist de helft van het verhaal. FAINL laat de modellen
           samenwerken — en levert één gewogen antwoord dat meer perspectieven heeft overleefd.{' '}
-          <strong className="text-black dark:text-[var(--color-accent)]">Dat is het difference tussen één mening en consensus.</strong>
+          <strong className="text-black dark:text-[var(--ink)]">Dat is het difference tussen één mening en consensus.</strong>
         </p>
         <button type="button" onClick={() => navigate('/mission')}
-          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--color-accent)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
+          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--action)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--action)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
           Probeer de consensusaanpak — gratis
           <ArrowRight className="w-5 h-5" />
         </button>
@@ -144,17 +144,17 @@ export const CompareMultiModelPage: FC = () => {
         <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white mb-6">De drie modellen in profiel</h2>
         <div className="space-y-6">
           {MODELS.map((model, i) => (
-            <div key={i} className="border-4 border-black dark:border-[var(--color-accent)] rounded-none p-8 bg-white dark:bg-black shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_var(--color-accent)]">
+            <div key={i} className="border-4 border-black dark:border-[var(--line)] rounded-none p-8 bg-white dark:bg-black shadow-md dark:shadow-lg">
               <div className="flex flex-col sm:flex-row sm:items-start gap-6">
                 <div className="shrink-0">
-                  <span className="inline-block px-5 py-2 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black text-lg font-black uppercase tracking-widest rounded-none">
+                  <span className="inline-block px-5 py-2 bg-black dark:bg-[var(--action)] text-white dark:text-black text-lg font-black uppercase tracking-widest rounded-none">
                     {model.name}
                   </span>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 flex-1">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <CheckCircle2 className="w-5 h-5 text-[var(--color-accent)] shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[var(--ink)] shrink-0" />
                       <span className="text-lg font-black uppercase tracking-widest text-black/40 dark:text-white/40">Sterk in</span>
                     </div>
                     <p className="text-xl text-black dark:text-white/80 leading-relaxed font-bold">{model.strength}</p>
@@ -197,9 +197,9 @@ export const CompareMultiModelPage: FC = () => {
 
       {/* How FAINL resolves it */}
       <section aria-label="Hoe FAINL dit oplost" className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
-        <div className="border-4 border-black dark:border-[var(--color-accent)] rounded-none p-10 md:p-12 bg-white dark:bg-black shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_var(--color-accent)]">
+        <div className="border-4 border-black dark:border-[var(--line)] rounded-none p-10 md:p-12 bg-white dark:bg-black shadow-md dark:shadow-lg">
           <div className="flex items-center gap-4 mb-8">
-            <div className="p-3 bg-black dark:bg-[var(--color-accent)] rounded-none">
+            <div className="p-3 bg-black dark:bg-[var(--action)] rounded-none">
               <Layers className="w-7 h-7 text-white dark:text-black" />
             </div>
             <h2 className="font-black text-3xl uppercase tracking-tight text-black dark:text-white">Hoe FAINL dit oplost</h2>
@@ -211,7 +211,7 @@ export const CompareMultiModelPage: FC = () => {
               { step: 'Drie', label: 'Synthese tot één antwoord', desc: 'FAINL combineert de sterkste elementen uit elke bijdrage tot één gewogen eindantwoord. Geen drie losse outputs die je zelf moet wegen — één gecheckte conclusie.' },
             ].map(s => (
               <li key={s.step} className="flex gap-6 items-start">
-                <span className="text-4xl font-black text-[var(--color-accent)] shrink-0 leading-none mt-1">{s.step}</span>
+                <span className="text-4xl font-black text-[var(--ink)] shrink-0 leading-none mt-1">{s.step}</span>
                 <div>
                   <p className="font-black text-2xl uppercase tracking-tight text-black dark:text-white mb-2">{s.label}</p>
                   <p className="text-xl text-black dark:text-white/80 leading-relaxed">{s.desc}</p>

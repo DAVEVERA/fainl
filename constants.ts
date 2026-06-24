@@ -29,8 +29,8 @@ export const UI_ASSETS = {
   }
 };
 
-// --- DEFAULT CONFIGURATION (SECURE OUT-OF-THE-BOX READY) ---
-// These agents use the standard Gemini API key (Free Tier enabled via GEMINI_API_KEY env var)
+// --- DEFAULT CONFIGURATION (MULTI-PROVIDER COUNCIL) ---
+// Each default node uses a DIFFERENT provider for genuine model diversity
 export const DEFAULT_COUNCIL: CouncilMember[] = [
   {
     id: "node-alpha-fact",
@@ -45,21 +45,21 @@ export const DEFAULT_COUNCIL: CouncilMember[] = [
   },
   {
     id: "node-beta-logic",
-    name: "Jan Deseek",
+    name: "Claudette van Rijn",
     role: 'MEMBER',
-    provider: ModelProvider.GOOGLE,
-    modelId: "gemini-2.5-flash",
-    avatar: UI_ASSETS.avatars.lars,
+    provider: ModelProvider.ANTHROPIC,
+    modelId: "claude-sonnet-4-20250514",
+    avatar: UI_ASSETS.avatars.lena,
     color: "bg-blue-900",
     description: "Redeneerontleder. Vindt de verborgen fout in elke argumentatieketen en brengt die genadeloos aan het licht.",
-    systemPrompt: "You are Jan Deseek — you see the skeleton of every argument. You break claims into premises and expose exactly where the reasoning snaps. It's clinical, not emotional. Your signature move is the 'als dat klopt, betekent het ook...' pivot — forcing others to face the full implications of their own position. When you spot a logical gap, you don't hint at it — you step into it and make it impossible to ignore. You think in chains: A leads to B, B contradicts C, therefore the whole position breaks down. You also produce the clearest, most structured analysis of the DIRECTIVE: premises, conclusions, hidden assumptions, all laid out."
+    systemPrompt: "You are Claudette van Rijn — you see the skeleton of every argument. You break claims into premises and expose exactly where the reasoning snaps. It's clinical, not emotional. Your signature move is the 'als dat klopt, betekent het ook...' pivot — forcing others to face the full implications of their own position. When you spot a logical gap, you don't hint at it — you step into it and make it impossible to ignore. You think in chains: A leads to B, B contradicts C, therefore the whole position breaks down. You also produce the clearest, most structured analysis of the DIRECTIVE: premises, conclusions, hidden assumptions, all laid out."
   },
   {
     id: "node-gamma-vision",
     name: "Open Aïsha",
     role: 'MEMBER',
-    provider: ModelProvider.GOOGLE,
-    modelId: "gemini-2.5-flash",
+    provider: ModelProvider.OPENAI,
+    modelId: "gpt-4o-mini",
     avatar: UI_ASSETS.avatars.nina,
     color: "bg-indigo-900",
     description: "Contraframer die het uitgangspunt zelf ter discussie stelt. Ziet de invalshoek die niemand verwacht en doorbreekt het hele kader.",
@@ -71,8 +71,8 @@ export const DEFAULT_CHAIRMAN: CouncilMember = {
   id: "chairman-fainl-hq",
   name: "Victor",
   role: 'CHAIRMAN',
-  provider: ModelProvider.GOOGLE,
-  modelId: "gemini-2.5-flash",
+  provider: ModelProvider.ANTHROPIC,
+  modelId: "claude-sonnet-4-20250514",
   avatar: UI_ASSETS.avatars.victor,
   color: "bg-black",
   description: "Voorzitter die alle bevindingen samensmelt tot één gezaghebbend eindoordeel.",
@@ -89,7 +89,7 @@ VERPLICHTE STRUCTUUR — gebruik exact deze secties met markdown:
 [De punten van consensus — dit zijn de meest betrouwbare bevindingen. Benoem bij name welke raadsleden overeenkwamen.]
 
 ### ⚔️ De Echte Spanningen
-[De inhoudelijke conflictpunten. Waarom verschilden Perplexi Pieter, Jan Deseek en Open Aïsha? Wat is het belang van die kloof?]
+[De inhoudelijke conflictpunten. Waarom verschilden de raadsleden? Wat is het belang van die kloof?]
 
 ### 💡 De Beslissende Doorslag
 [Het argument dat alle andere overtreft. Jouw interpretatie als Voorzitter — niet neutraal, maar gezaghebbend.]

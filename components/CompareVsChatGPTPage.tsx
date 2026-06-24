@@ -146,21 +146,21 @@ export const CompareVsChatGPTPage: FC = () => {
 
       {/* Hero */}
     <section className="max-w-4xl mx-auto px-5 sm:px-8 pt-10 pb-14 md:pt-14 md:pb-20">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--action)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
           Vergelijking — FAINL vs ChatGPT
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
           Één AI of consensus?{' '}
-          <span className="text-[var(--color-accent)]">dat hangt af van de inzet.</span>
+          <span className="text-[var(--ink)]">dat hangt af van de inzet.</span>
         </h1>
         <p className="text-xl sm:text-2xl text-black dark:text-white/80 leading-relaxed max-w-2xl mb-8">
           ChatGPT is snel en veelzijdig. FAINL laat meerdere AI-modellen tegelijk meedenken,
           elkaars aannames toetsen en één gewogen antwoord formuleren. Hier zie je objectief
           wanneer welke aanpak past.{' '}
-          <strong className="text-black dark:text-[var(--color-accent)]">Geen reclame — een eerlijke vergelijking.</strong>
+          <strong className="text-black dark:text-[var(--ink)]">Geen reclame — een eerlijke vergelijking.</strong>
         </p>
         <button type="button" onClick={() => navigate('/mission')}
-          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--color-accent)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
+          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--action)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--action)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
           Probeer zelf het verschil — gratis
           <ArrowRight className="w-5 h-5" />
         </button>
@@ -169,25 +169,25 @@ export const CompareVsChatGPTPage: FC = () => {
       {/* Comparison table */}
       <section aria-label="Vergelijkingstabel FAINL vs ChatGPT" className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
         <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white mb-6">Hoofd­kenmerken vergeleken</h2>
-        <div className="border-4 border-black dark:border-[var(--color-accent)] rounded-none overflow-hidden bg-white dark:bg-black shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_var(--color-accent)]">
+        <div className="border-4 border-black dark:border-[var(--line)] rounded-none overflow-hidden bg-white dark:bg-black shadow-md dark:shadow-lg">
           {/* Header row */}
-          <div className="grid grid-cols-3 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black">
+          <div className="grid grid-cols-3 bg-black dark:bg-[var(--action)] text-white dark:text-black">
             <div className="px-5 py-5 text-lg font-black uppercase tracking-widest">Kenmerk</div>
-            <div className="px-5 py-5 text-lg font-black uppercase tracking-widest border-l-4 border-white/20 dark:border-black/20 text-[var(--color-accent)] dark:text-black">FAINL</div>
+            <div className="px-5 py-5 text-lg font-black uppercase tracking-widest border-l-4 border-white/20 dark:border-black/20 text-[var(--ink)] dark:text-black">FAINL</div>
             <div className="px-5 py-5 text-lg font-black uppercase tracking-widest border-l-4 border-white/20 dark:border-black/20">ChatGPT</div>
           </div>
           {/* Data rows */}
           {COMPARISON.map((row, i) => (
-            <div key={i} className={`grid grid-cols-3 border-t-2 border-black/10 dark:border-[var(--color-accent)]/20 ${i % 2 === 0 ? 'bg-white dark:bg-black' : 'bg-black/[0.02] dark:bg-white/[0.05]'}`}>
+            <div key={i} className={`grid grid-cols-3 border-t-2 border-black/10 dark:border-[var(--line)]/20 ${i % 2 === 0 ? 'bg-white dark:bg-black' : 'bg-black/[0.02] dark:bg-white/[0.05]'}`}>
               <div className="px-5 py-5 text-lg font-bold text-black dark:text-white/80 leading-snug">{row.kenmerk}</div>
-              <div className="px-5 py-5 border-l-2 border-black/10 dark:border-[var(--color-accent)]/20 flex items-start gap-3">
-                {row.fainl.positive === true && <CheckCircle2 className="w-5 h-5 text-[var(--color-accent)] shrink-0 mt-0.5" />}
+              <div className="px-5 py-5 border-l-2 border-black/10 dark:border-[var(--line)]/20 flex items-start gap-3">
+                {row.fainl.positive === true && <CheckCircle2 className="w-5 h-5 text-[var(--ink)] shrink-0 mt-0.5" />}
                 {row.fainl.positive === false && <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />}
                 {row.fainl.positive === null && <MinusCircle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />}
-                <span className="text-lg font-black text-black dark:text-[var(--color-accent)] leading-snug">{row.fainl.label}</span>
+                <span className="text-lg font-black text-black dark:text-[var(--ink)] leading-snug">{row.fainl.label}</span>
               </div>
-              <div className="px-5 py-5 border-l-2 border-black/10 dark:border-[var(--color-accent)]/20 flex items-start gap-3">
-                {row.chatgpt.positive === true && <CheckCircle2 className="w-5 h-5 text-[var(--color-accent)] shrink-0 mt-0.5" />}
+              <div className="px-5 py-5 border-l-2 border-black/10 dark:border-[var(--line)]/20 flex items-start gap-3">
+                {row.chatgpt.positive === true && <CheckCircle2 className="w-5 h-5 text-[var(--ink)] shrink-0 mt-0.5" />}
                 {row.chatgpt.positive === false && <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />}
                 {row.chatgpt.positive === null && <MinusCircle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />}
                 <span className="text-lg font-bold text-black/60 dark:text-white/60 leading-snug">{row.chatgpt.label}</span>
@@ -202,9 +202,9 @@ export const CompareVsChatGPTPage: FC = () => {
         <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white mb-6">Wanneer gebruik je wat?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SCENARIOS.map(sc => (
-            <div key={sc.title} className={`border-4 border-black dark:border-[var(--color-accent)] rounded-none p-8 bg-white dark:bg-black shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_var(--color-accent)]`}>
+            <div key={sc.title} className={`border-4 border-black dark:border-[var(--line)] rounded-none p-8 bg-white dark:bg-black shadow-md dark:shadow-lg`}>
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-black dark:bg-[var(--color-accent)] rounded-none">
+                <div className="p-3 bg-black dark:bg-[var(--action)] rounded-none">
                   <sc.icon className="w-6 h-6 text-white dark:text-black" />
                 </div>
                 <h3 className="font-black text-xl uppercase tracking-tight text-black dark:text-white">{sc.title}</h3>
@@ -212,7 +212,7 @@ export const CompareVsChatGPTPage: FC = () => {
               <ul className="space-y-4">
                 {sc.items.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="mt-2 w-2 h-2 rounded-none bg-[var(--color-accent)] shrink-0" />
+                    <span className="mt-2 w-2 h-2 rounded-none bg-[var(--action)] shrink-0" />
                     <span className="text-lg text-black/60 dark:text-white/70 leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -224,15 +224,15 @@ export const CompareVsChatGPTPage: FC = () => {
 
       {/* Callout */}
       <section aria-label="Kernverschil" className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
-        <div className="border-4 border-black dark:border-[var(--color-accent)] rounded-none p-8 md:p-10 bg-white dark:bg-black flex gap-6 items-start shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_var(--color-accent)]">
-          <div className="p-3 bg-black dark:bg-[var(--color-accent)] rounded-none shrink-0">
+        <div className="border-4 border-black dark:border-[var(--line)] rounded-none p-8 md:p-10 bg-white dark:bg-black flex gap-6 items-start shadow-md dark:shadow-lg">
+          <div className="p-3 bg-black dark:bg-[var(--action)] rounded-none shrink-0">
             <ShieldCheck className="w-7 h-7 text-white dark:text-black" />
           </div>
           <div>
             <p className="font-black text-xl uppercase tracking-tight text-black dark:text-white mb-3">Het kernverschil in één zin</p>
             <p className="text-xl text-black dark:text-white/80 leading-relaxed">
-              ChatGPT geeft je <strong className="text-black dark:text-[var(--color-accent)]">één mening van één model</strong>.
-              FAINL geeft je <strong className="text-black dark:text-[var(--color-accent)]">een gewogen conclusie op basis van meerdere modellen die elkaars redenering hebben bekritiseerd</strong> —
+              ChatGPT geeft je <strong className="text-black dark:text-[var(--ink)]">één mening van één model</strong>.
+              FAINL geeft je <strong className="text-black dark:text-[var(--ink)]">een gewogen conclusie op basis van meerdere modellen die elkaars redenering hebben bekritiseerd</strong> —
               zodat je weet dat het eindantwoord meer perspectieven heeft overleefd.
             </p>
           </div>

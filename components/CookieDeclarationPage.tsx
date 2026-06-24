@@ -12,21 +12,21 @@ export const CookieDeclarationPage: FC = () => {
       keywords="FAINL cookies, cookieverklaring, cookiebeleid FAINL"
     />
     <div className="max-w-4xl mx-auto px-4 md:px-6 py-12 md:py-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="bg-white dark:bg-black border-4 border-black dark:border-[#03B390] p-10 md:p-20 shadow-[15px_15px_0_0_black] dark:shadow-[15px_15px_0_0_#03B390] rounded-none">
+      <div className="bg-white dark:bg-black border-4 border-black dark:border-[var(--ink)] p-10 md:p-20 shadow-lg dark:shadow-lg rounded-none">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mb-16 pb-12 border-b-4 border-black/10 dark:border-[#03B390]/20">
-          <div className="w-20 h-20 bg-black dark:bg-[#03B390] rounded-none flex items-center justify-center shrink-0">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mb-16 pb-12 border-b-4 border-black/10 dark:border-[var(--ink)]/20">
+          <div className="w-20 h-20 bg-black dark:bg-[var(--ink)] rounded-none flex items-center justify-center shrink-0">
             <Cookie className="text-white dark:text-black w-10 h-10" />
           </div>
           <div>
             <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-black dark:text-white leading-tight mb-4">Cookieverklaring</h1>
-            <p className="text-lg font-black text-[#03B390] dark:text-[#03B390] uppercase tracking-widest">FAINL — MNRV · Versie 13-03-2026</p>
+            <p className="text-lg font-black text-[var(--ink)] dark:text-[var(--ink)] uppercase tracking-widest">FAINL — MNRV · Versie 13-03-2026</p>
           </div>
         </div>
 
         {/* Body */}
-        <div className="prose prose-xl max-w-none dark:prose-invert prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-p:text-black/80 dark:prose-p:text-white/80 prose-li:text-black/80 dark:prose-li:text-white/80 prose-strong:text-black dark:prose-strong:text-[#03B390]">
+        <div className="prose prose-xl max-w-none dark:prose-invert prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-p:text-black/80 dark:prose-p:text-white/80 prose-li:text-black/80 dark:prose-li:text-white/80 prose-strong:text-black dark:prose-strong:text-[var(--ink)]">
 
           <p>FAINL gebruikt functionele, analytische en, indien van toepassing, marketingcookies.</p>
 

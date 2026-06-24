@@ -116,14 +116,11 @@ const FAQItem: FC<{ q: string; a: string }> = ({ q, a }) => {
 // ── AI Ticker Models ─────────────────────────────────────────────────────────
 const AI_MODELS = [
   { name: "Google Gemini",    icon: <img src="/ai-logos/gemini-color.svg" alt="Google Gemini"    className="w-6 h-6 flex-shrink-0 object-contain" /> },
-  { name: "OpenAI",           icon: <img src="/ai-logos/openai.svg"        alt="OpenAI"           className="w-6 h-6 flex-shrink-0 object-contain" /> },
+  { name: "OpenAI GPT",       icon: <img src="/ai-logos/openai.svg"        alt="OpenAI"           className="w-6 h-6 flex-shrink-0 object-contain" /> },
   { name: "Anthropic Claude", icon: <img src="/ai-logos/claude.svg"        alt="Anthropic Claude" className="w-6 h-6 flex-shrink-0 object-contain" /> },
   { name: "Mistral AI",       icon: <img src="/ai-logos/mistral.svg"       alt="Mistral AI"       className="w-6 h-6 flex-shrink-0 object-contain" /> },
   { name: "DeepSeek",         icon: <img src="/ai-logos/deepseek.svg"      alt="DeepSeek"         className="w-6 h-6 flex-shrink-0 object-contain" /> },
-  { name: "Groq",             icon: <img src="/ai-logos/groq.svg"          alt="Groq"             className="w-6 h-6 flex-shrink-0 object-contain" /> },
-  { name: "Grok",             icon: <img src="/ai-logos/grok.svg"          alt="Grok"             className="w-6 h-6 flex-shrink-0 object-contain" /> },
-  { name: "Perplexity",       icon: <img src="/ai-logos/perplexity.svg"    alt="Perplexity"       className="w-6 h-6 flex-shrink-0 object-contain" /> },
-  { name: "Qwen",             icon: <img src="/ai-logos/qwen.svg"          alt="Qwen"             className="w-6 h-6 flex-shrink-0 object-contain" /> },
+  { name: "Groq (Llama)",     icon: <img src="/ai-logos/groq.svg"          alt="Groq"             className="w-6 h-6 flex-shrink-0 object-contain" /> },
 ];
 
 
@@ -201,12 +198,12 @@ const HeroComparisonBanner: FC = () => {
                 <div className="w-10 h-10 border border-white/20 flex items-center justify-center mr-0 relative right-[-2px] z-0">
                   <Lightbulb className="w-5 h-5 text-white/40" />
                 </div>
-                <div className="bg-[#3B82F6] w-20 h-20 md:w-24 md:h-24 flex flex-col items-center justify-center relative z-10 shadow-[0_0_25px_rgba(59,130,246,0.15)]">
-                  <span className="font-black text-white text-3xl md:text-5xl leading-none tracking-tighter shadow-none drop-shadow-md">
-                    90%
+                <div className="bg-zinc-900 w-20 h-20 md:w-24 md:h-24 flex flex-col items-center justify-center relative z-10">
+                  <span className="font-black text-white text-2xl md:text-3xl leading-none tracking-tighter">
+                    3x
                   </span>
                   <span className="font-extrabold text-white text-[9px] uppercase tracking-[0.25em] mt-1 ml-1">
-                    Accuratie
+                    Perspectief
                   </span>
                 </div>
                 <div className="w-10 h-10 border border-white/20 flex items-center justify-center ml-0 relative left-[-2px] z-0">
@@ -226,7 +223,7 @@ const HeroComparisonBanner: FC = () => {
 
             <div className="h-28 flex items-start justify-center">
               <p className="text-sm md:text-base font-bold text-white text-left max-w-[280px] w-full leading-snug">
-                Activeer 5 parallelle intelligenties. Laat ze debatteren. Krijg het best haalbare antwoord met 90% accuratie.
+                Activeer meerdere parallelle intelligenties. Laat ze debatteren. Krijg het best haalbare, gevalideerde antwoord.
               </p>
             </div>
           </div>
@@ -260,7 +257,7 @@ const HeroComparisonBanner: FC = () => {
 // ── Brand Break Line ──────────────────────────────────────────────────────────
 const BrandBreakLine: FC = () => (
   <div className="w-full flex justify-center bg-transparent py-0 relative z-20">
-    <div className="w-32 md:w-72 h-1.5 md:h-2 bg-black border-2 border-black shadow-[4px_4px_0_0_var(--color-accent)]"></div>
+    <div className="w-32 md:w-72 h-1.5 md:h-2 bg-black border-2 border-black shadow-sm"></div>
   </div>
 );
 
@@ -321,7 +318,7 @@ export const LandingPage: FC = () => {
 
         <h1 className={`relative z-10 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] text-center max-w-7xl mx-auto mb-6 sm:mb-10 text-black transition-opacity duration-500 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'}`}>
           {HERO_SLIDES[heroSlideIdx].top}<br className="hidden md:block mb-2" />
-          F<span className="text-[var(--color-accent)]">AI</span>{HERO_SLIDES[heroSlideIdx].bottomRest}
+          F<span className="text-[var(--ink)]">AI</span>{HERO_SLIDES[heroSlideIdx].bottomRest}
         </h1>
 
         {/* Action Buttons — prominent, directly under H1 */}
@@ -329,7 +326,7 @@ export const LandingPage: FC = () => {
           <button
             type="button"
             onClick={() => navigate("/mission")}
-            className="w-full sm:w-80 h-14 md:h-16 flex items-center justify-center bg-[var(--color-accent)] text-white font-black text-sm md:text-lg uppercase tracking-[0.2em] border-2 md:border-4 border-black hover:bg-black hover:text-white transition-all duration-300 group shadow-[4px_4px_0_0_black] md:shadow-[8px_8px_0_0_black] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+            className="w-full sm:w-80 h-14 md:h-16 flex items-center justify-center bg-[var(--action)] text-white font-black text-sm md:text-lg uppercase tracking-[0.2em] border-2 md:border-4 border-black hover:bg-black hover:text-white transition-all duration-300 group shadow-[4px_4px_0_0_black] md:shadow-[8px_8px_0_0_black] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
           >
             Start gratis sessie
             <ArrowRight className="inline-block ml-3 w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1" />
@@ -337,7 +334,7 @@ export const LandingPage: FC = () => {
 
           <Link
             to="/cookbook"
-            className="w-full sm:w-80 h-14 md:h-16 flex items-center justify-center bg-white text-black font-black text-sm md:text-lg uppercase tracking-[0.2em] border-2 md:border-4 border-black hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300 text-center shadow-[4px_4px_0_0_black] md:shadow-[8px_8px_0_0_black] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+            className="w-full sm:w-80 h-14 md:h-16 flex items-center justify-center bg-white text-black font-black text-sm md:text-lg uppercase tracking-[0.2em] border-2 md:border-4 border-black hover:bg-[var(--action)] hover:text-white transition-all duration-300 text-center shadow-[4px_4px_0_0_black] md:shadow-[8px_8px_0_0_black] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
           >
             Voorbeeldvragen
           </Link>
@@ -345,7 +342,7 @@ export const LandingPage: FC = () => {
 
         {/* Inline Hero Input — remove friction, start directly from landing page */}
         <div className="relative z-10 w-full max-w-2xl mx-auto px-4 mb-8 md:mb-12">
-          <div className={`relative bg-white border-2 md:border-4 border-black transition-all duration-200 ${isHeroFocused ? 'shadow-[6px_6px_0_0_var(--color-accent)]' : 'shadow-[4px_4px_0_0_black]'}`}>
+          <div className={`relative bg-white border-2 md:border-4 border-black transition-all duration-200 ${isHeroFocused ? 'shadow-md' : 'shadow-[4px_4px_0_0_black]'}`}>
             <input
               type="text"
               value={heroInput}
@@ -361,7 +358,7 @@ export const LandingPage: FC = () => {
               type="button"
               onClick={handleHeroSubmit}
               aria-label="Vraag starten"
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 p-2 bg-[var(--color-accent)] text-white hover:bg-black transition-colors border-2 border-black"
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 p-2 bg-[var(--action)] text-white hover:bg-black transition-colors border-2 border-black"
             >
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -374,7 +371,7 @@ export const LandingPage: FC = () => {
         {/* Text moved to H1 above */}
 
         {/* Brand break line */}
-        <div className="relative z-10 w-32 md:w-72 mx-auto h-1.5 md:h-2 bg-black border-2 border-black shadow-[4px_4px_0_0_var(--color-accent)] mb-6 md:mb-12"></div>
+        <div className="relative z-10 w-32 md:w-72 mx-auto h-1.5 md:h-2 bg-black border-2 border-black shadow-sm mb-6 md:mb-12"></div>
 
         {/* Static Comparison Banner */}
         <HeroComparisonBanner />
@@ -387,7 +384,7 @@ export const LandingPage: FC = () => {
           <div className="mb-12 md:mb-20 max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter text-black mb-6 md:mb-8 leading-[0.9]">
               Van Twijfelachtig naar Zekerheid:<br />
-              <span className="text-[var(--color-accent)]">AI Zonder Fratsen.</span>
+              <span className="text-[var(--ink)]">AI Zonder Fratsen.</span>
             </h2>
             <p className="text-lg md:text-2xl font-bold text-black leading-relaxed max-w-2xl mx-auto">
               De enige standaard voor wie geen genoegen neemt met "waarschijnlijk waar".
@@ -396,31 +393,31 @@ export const LandingPage: FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
               <div className="group">
-                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--color-accent)] transition-colors duration-500 mb-2 md:mb-4">01</div>
+                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--ink)] transition-colors duration-500 mb-2 md:mb-4">01</div>
                 <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-black mb-2 md:mb-4">De Limiet van Eén</h3>
                 <p className="text-base md:text-lg font-bold text-black leading-relaxed">
                   Eén AI-model is een tunnelvisie. Zelfs de beste modellen hallucineren. FAINL doorbreekt de isolatie van single-model antwoorden.
                 </p>
               </div>
               <div className="group">
-                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--color-accent)] transition-colors duration-500 mb-2 md:mb-4">02</div>
+                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--ink)] transition-colors duration-500 mb-2 md:mb-4">02</div>
                 <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-black mb-2 md:mb-4">Collectieve Kracht</h3>
                 <p className="text-base md:text-lg font-bold text-black leading-relaxed">
                   Wij zetten 5 top-modellen parallel aan het work. Geen beïnvloeding, maar pure, rauwe intelligentie uit verschillende bronnen.
                 </p>
               </div>
               <div className="group">
-                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--color-accent)] transition-colors duration-500 mb-2 md:mb-4">03</div>
+                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--ink)] transition-colors duration-500 mb-2 md:mb-4">03</div>
                 <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-black mb-2 md:mb-4">Het FAINL Protocol</h3>
                 <p className="text-base md:text-lg font-bold text-black leading-relaxed">
                   Debat en verificatie zitten in ons DNA. Modellen corrigeren elkaar live, nog voordat jij het antwoord ziet.
                 </p>
               </div>
               <div className="group">
-                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--color-accent)] transition-colors duration-500 mb-2 md:mb-4">04</div>
-                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-black mb-2 md:mb-4">90% Accuratie</h3>
+                <div className="text-5xl md:text-7xl font-black text-black group-hover:text-[var(--ink)] transition-colors duration-500 mb-2 md:mb-4">04</div>
+                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-black mb-2 md:mb-4">Gevalideerde Antwoorden</h3>
                 <p className="text-base md:text-lg font-bold text-black leading-relaxed">
-                  Een reductie van 80% op vage antwoorden en een sprong naar 90% correcte, diep gewogen en gemotiveerde beantwoording.
+                  Meerdere modellen corrigeren elkaars fouten en blinde vlekken. Het resultaat: dieper gewogen en beter onderbouwde antwoorden.
                 </p>
               </div>
           </div>
@@ -503,10 +500,10 @@ export const LandingPage: FC = () => {
           ].map(({ img, title, desc }, idx) => (
             <li
               key={title}
-              className="group flex flex-col md:flex-row items-center md:items-start gap-8 p-8 md:p-12 bg-white dark:bg-black border-2 border-black rounded-none hover:border-[var(--color-accent)] hover:shadow-[10px_10px_0_0_var(--color-accent)] transition-all duration-300"
+              className="group flex flex-col md:flex-row items-center md:items-start gap-8 p-8 md:p-12 bg-white dark:bg-black border-2 border-black rounded-none hover:border-[var(--line)] hover:shadow-lg transition-all duration-300"
             >
               <div className="flex-shrink-0 w-20 h-20 flex items-center justify-center bg-black text-white relative">
-                 <span className="absolute -top-3 -left-3 w-8 h-8 bg-[var(--color-accent)] text-white font-black flex items-center justify-center text-sm">0{idx+1}</span>
+                 <span className="absolute -top-3 -left-3 w-8 h-8 bg-[var(--action)] text-white font-black flex items-center justify-center text-sm">0{idx+1}</span>
                 <img src={img} alt={title} className="w-10 h-10 object-contain invert" />
               </div>
               <div className="flex-1 text-center md:text-left">
@@ -571,9 +568,9 @@ export const LandingPage: FC = () => {
             ].map(({ icon: Icon, title, desc }) => (
               <article
                 key={title}
-                className="bg-white dark:bg-black border-2 border-black rounded-none p-6 sm:p-8 md:p-10 hover:border-[var(--color-accent)] hover:shadow-[6px_6px_0_0_var(--color-accent)] md:hover:shadow-[10px_10px_0_0_var(--color-accent)] transition-all duration-300 group"
+                className="bg-white dark:bg-black border-2 border-black rounded-none p-6 sm:p-8 md:p-10 hover:border-[var(--line)] hover:shadow-md md:hover:shadow-lg transition-all duration-300 group"
               >
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-black flex items-center justify-center mb-6 md:mb-8 group-hover:bg-[var(--color-accent)] transition-colors duration-500">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-black flex items-center justify-center mb-6 md:mb-8 group-hover:bg-[var(--action)] transition-colors duration-500">
                   <Icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
                 <h3 className="font-black text-xl md:text-2xl uppercase tracking-tighter text-black dark:text-white mb-4 md:mb-6">
@@ -594,18 +591,18 @@ export const LandingPage: FC = () => {
       >
         <div className="max-w-4xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter text-black dark:text-white mb-4 sm:mb-6 text-center">
-            FAINL <span className="text-[var(--color-accent)]">VS.</span> GEWONE AI
+            FAINL <span className="text-[var(--ink)]">VS.</span> GEWONE AI
           </h2>
           <p className="text-center text-lg md:text-2xl text-black dark:text-white/60 font-bold mb-10 md:mb-24 leading-relaxed">
             Waarom is één model nooit genoeg voor kritische vragen?
           </p>
 
-          <div className="border-2 border-black dark:border-white/20 overflow-hidden shadow-[8px_8px_0_0_var(--color-accent)] md:shadow-[20px_20px_0_0_var(--color-accent)]">
+          <div className="border-2 border-black dark:border-white/20 overflow-hidden shadow-md md:shadow-lg">
             {/* Column headers */}
             <div className="grid grid-cols-[1fr_80px_80px] sm:grid-cols-[1fr_140px_140px] bg-black text-white px-6 py-6 gap-4">
               <span className="font-black uppercase tracking-[0.2em] text-sm text-text-black">Protocol Check</span>
               <span className="font-black uppercase tracking-[0.2em] text-sm text-center text-text-black">Single AI</span>
-              <span className="font-black uppercase tracking-[0.2em] text-sm text-center text-[var(--color-accent)]">FAINL</span>
+              <span className="font-black uppercase tracking-[0.2em] text-sm text-center text-[var(--ink)]">FAINL</span>
             </div>
 
             {/* Rows */}
@@ -621,14 +618,14 @@ export const LandingPage: FC = () => {
               ] as [string, boolean | string, boolean][]).map(([label, single, fainl]) => (
                 <div
                   key={label}
-                  className="grid grid-cols-[1fr_80px_80px] sm:grid-cols-[1fr_140px_140px] items-center px-4 py-4 sm:px-6 sm:py-6 gap-2 sm:gap-4 hover:bg-zinc-50 dark:hover:bg-[var(--color-accent)]/5 transition-colors duration-200"
+                  className="grid grid-cols-[1fr_80px_80px] sm:grid-cols-[1fr_140px_140px] items-center px-4 py-4 sm:px-6 sm:py-6 gap-2 sm:gap-4 hover:bg-zinc-50 dark:hover:bg-[var(--action)]/5 transition-colors duration-200"
                 >
                   <span className="font-black uppercase tracking-tight text-sm sm:text-lg md:text-xl text-black dark:text-white">
                     {label}
                   </span>
                   <span className="flex items-center justify-center">
                     {single === true ? (
-                      <CheckCircle2 className="w-6 h-6 text-[var(--color-accent)]" />
+                      <CheckCircle2 className="w-6 h-6 text-[var(--ink)]" />
                     ) : single === false ? (
                       <span className="w-6 h-6 flex items-center justify-center bg-black/5 text-black/20 font-black text-xs">✕</span>
                     ) : (
@@ -637,7 +634,7 @@ export const LandingPage: FC = () => {
                   </span>
                   <span className="flex items-center justify-center">
                     {fainl ? (
-                      <CheckCircle2 className="w-8 h-8 text-[var(--color-accent)] drop-shadow-[0_0_10px_rgba(3,179,144,0.3)]" />
+                      <CheckCircle2 className="w-8 h-8 text-[var(--ink)] drop-shadow-[0_0_10px_rgba(3,179,144,0.3)]" />
                     ) : (
                       <span className="w-6 h-6 flex items-center justify-center bg-black/5 text-black/20 font-black text-xs">✕</span>
                     )}
@@ -669,7 +666,7 @@ export const LandingPage: FC = () => {
             ))}
           </div>
 
-          <p className="text-center mt-12 text-lg font-black uppercase tracking-widest text-[var(--color-accent)]">
+          <p className="text-center mt-12 text-lg font-black uppercase tracking-widest text-[var(--ink)]">
             Meer vragen?{" "}
             <Link to="/faq" className="underline hover:text-black transition-colors">Bekijk volledige FAQ</Link>
             {" "}of{" "}
@@ -689,7 +686,7 @@ export const LandingPage: FC = () => {
             EERLIJKE PRIJS
           </h2>
           <p className="text-lg md:text-2xl text-black dark:text-white/60 font-bold mb-12 md:mb-24 leading-relaxed max-w-2xl mx-auto">
-            Geen verborgen kossten. Betaal voor wat je gebruikt. Start vandaag met twee gratis sessies.
+            Geen verborgen kosten. Betaal voor wat je gebruikt. Start vandaag met twee gratis sessies.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
@@ -698,10 +695,10 @@ export const LandingPage: FC = () => {
                 key={pkg.count}
                 type="button"
                 onClick={() => window.open(pkg.stripeUrl, "_blank")}
-                className="flex flex-col items-center justify-center p-6 sm:p-10 bg-white dark:bg-black border-2 md:border-4 border-black rounded-none hover:border-[var(--color-accent)] hover:shadow-[6px_6px_0_0_var(--color-accent)] md:hover:shadow-[10px_10px_0_0_var(--color-accent)] hover:-translate-y-1 transition-all duration-300 group"
+                className="flex flex-col items-center justify-center p-6 sm:p-10 bg-white dark:bg-black border-2 md:border-4 border-black rounded-none hover:border-[var(--line)] hover:shadow-md md:hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="text-5xl sm:text-6xl font-black mb-2 text-black dark:text-white">{pkg.count}</div>
-                <div className="text-lg font-black uppercase tracking-[0.3em] text-[var(--color-accent)] mb-6">
+                <div className="text-lg font-black uppercase tracking-[0.3em] text-[var(--ink)] mb-6">
                   CREDITS
                 </div>
                 <div className="text-4xl font-black text-black dark:text-white">€{pkg.price}</div>
@@ -711,15 +708,15 @@ export const LandingPage: FC = () => {
             <button
               type="button"
               onClick={() => window.open(PRICING.SUBSCRIPTIONS[0].stripeUrl, "_blank")}
-              className="flex flex-col items-center justify-center p-10 bg-black text-white border-2 border-black rounded-none hover:shadow-[10px_10px_0_0_var(--color-accent)] hover:-translate-y-1 transition-all duration-300 relative group"
+              className="flex flex-col items-center justify-center p-10 bg-black text-white border-2 border-black rounded-none hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative group"
             >
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--color-accent)] text-black text-sm font-black uppercase tracking-[0.2em] whitespace-nowrap">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--action)] text-black text-sm font-black uppercase tracking-[0.2em] whitespace-nowrap">
                 Abonnement
               </div>
               <div className="text-3xl font-black uppercase tracking-tighter mb-2 text-white">
                 {PRICING.SUBSCRIPTIONS[0].name}
               </div>
-              <div className="text-lg font-black uppercase tracking-[0.3em] text-[var(--color-accent)] mb-6">
+              <div className="text-lg font-black uppercase tracking-[0.3em] text-[var(--ink)] mb-6">
                 {PRICING.SUBSCRIPTIONS[0].creditsPerMonth} CREDITS/MO
               </div>
               <div className="text-4xl font-black text-white">€{PRICING.SUBSCRIPTIONS[0].price}</div>
@@ -730,7 +727,7 @@ export const LandingPage: FC = () => {
           </div>
 
           <p className="text-center text-lg font-black uppercase tracking-widest text-black/30">
-            <Link to="/tokens" className="inline-flex items-center gap-3 underline hover:text-[var(--color-accent)] transition-colors">
+            <Link to="/tokens" className="inline-flex items-center gap-3 underline hover:text-[var(--ink)] transition-colors">
               Bekijk alle pakketten
               <ArrowRight className="w-5 h-5" />
             </Link>
@@ -746,7 +743,7 @@ export const LandingPage: FC = () => {
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-4xl sm:text-5xl md:text-8xl font-black uppercase tracking-tighter text-black dark:text-white leading-[0.8] mb-6 md:mb-10">
-            Klaar voor de<br /><span className="text-[var(--color-accent)]">Waarheid?</span>
+            Klaar voor de<br /><span className="text-[var(--ink)]">Waarheid?</span>
           </h2>
           <p className="text-lg sm:text-xl md:text-3xl font-bold text-black dark:text-white/60 mb-10 md:mb-16 max-w-2xl mx-auto leading-tight italic">
             "Stel je vraag. Laat de modellen strijden. Ontvang het enige antwoord dat telt."
@@ -755,7 +752,7 @@ export const LandingPage: FC = () => {
           <button
             type="button"
             onClick={() => navigate("/mission")}
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-3 sm:gap-4 px-8 py-5 sm:px-16 sm:py-8 bg-black text-white font-black text-base sm:text-xl uppercase tracking-[0.2em] md:tracking-[0.3em] border-2 sm:border-4 border-black hover:bg-white hover:text-black transition-all duration-500 group shadow-[8px_8px_0_0_var(--color-accent)] md:shadow-[20px_20px_0_0_var(--color-accent)] hover:shadow-none hover:translate-x-2 hover:translate-y-2"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-3 sm:gap-4 px-8 py-5 sm:px-16 sm:py-8 bg-black text-white font-black text-base sm:text-xl uppercase tracking-[0.2em] md:tracking-[0.3em] border-2 sm:border-4 border-black hover:bg-white hover:text-black transition-all duration-500 group shadow-md md:shadow-lg hover:shadow-none hover:translate-x-2 hover:translate-y-2"
           >
             Start Gratis Sessie
             <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-4" />

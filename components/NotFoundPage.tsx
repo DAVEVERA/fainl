@@ -17,7 +17,7 @@ export const NotFoundPage: FC = () => {
           muted
           loop
           playsInline
-          className="w-full max-w-md rounded-none border-4 border-black dark:border-[var(--color-accent)] shadow-[8px_8px_0_0_var(--color-accent)] mb-8"
+          className="w-full max-w-md rounded-none border-4 border-black dark:border-[var(--line)] shadow-md mb-8"
         />
         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-black dark:text-white mb-4">
           404
@@ -27,7 +27,7 @@ export const NotFoundPage: FC = () => {
         </p>
         <Link
           to="/"
-          className="px-8 py-4 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black font-black text-sm uppercase tracking-widest hover:bg-[var(--color-accent)] hover:text-black transition-all shadow-[4px_4px_0_0_var(--color-accent)] border-2 border-black"
+          className="px-8 py-4 bg-black dark:bg-[var(--action)] text-white dark:text-black font-black text-sm uppercase tracking-widest hover:bg-[var(--action)] hover:text-black transition-all shadow-sm border-2 border-black"
         >
           Terug naar home
         </Link>

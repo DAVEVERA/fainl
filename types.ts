@@ -39,9 +39,10 @@ export interface PeerReview {
 
 export interface CouncilResponse {
   memberId: string;
-  content: string; // Raw content
-  sections?: Record<string, string>; // Parsed compartments
+  content: string;
+  sections?: Record<string, string>;
   timestamp: number;
+  startedAt?: number;
 }
 
 export interface DebateMessage {

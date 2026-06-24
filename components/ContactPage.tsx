@@ -51,7 +51,7 @@ export const ContactPage: FC = () => {
             {/* Header */}
             <div className="mb-20 md:mb-32">
                 <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black dark:text-white leading-none mb-8">
-                    Vragen staat <span className="text-[var(--color-accent)]">vrij!</span>
+                    Vragen staat <span className="text-[var(--ink)]">vrij!</span>
                 </h1>
                 <p className="text-xl md:text-3xl text-black dark:text-white/80 max-w-2xl leading-relaxed font-bold">
                     Vragen over FAINL, feedback of interesse in samenwerking? Stuur een bericht — we reageren binnen 12 uur.
@@ -64,14 +64,14 @@ export const ContactPage: FC = () => {
                 <div className="lg:w-2/5 space-y-12">
                     <div className="space-y-8">
                         <div className="flex items-start gap-6">
-                            <div className="w-14 h-14 rounded-none bg-black dark:bg-[var(--color-accent)] flex items-center justify-center flex-shrink-0">
+                            <div className="w-14 h-14 rounded-none bg-black dark:bg-[var(--action)] flex items-center justify-center flex-shrink-0">
                                 <Mail className="w-7 h-7 text-white dark:text-black" />
                             </div>
                             <div>
-                                <p className="text-base font-black uppercase tracking-widest text-[var(--color-accent)] dark:text-[var(--color-accent)] mb-1">E-mail</p>
+                                <p className="text-base font-black uppercase tracking-widest text-[var(--ink)] dark:text-[var(--ink)] mb-1">E-mail</p>
                                 <a
                                     href="mailto:info@fainl.com"
-                                    className="text-xl md:text-2xl font-black text-black dark:text-white hover:text-[var(--color-accent)] transition-colors"
+                                    className="text-xl md:text-2xl font-black text-black dark:text-white hover:text-[var(--ink)] transition-colors"
                                 >
                                     info@fainl.com
                                 </a>
@@ -79,21 +79,21 @@ export const ContactPage: FC = () => {
                         </div>
 
                         <div className="flex items-start gap-6">
-                            <div className="w-14 h-14 rounded-none bg-black dark:bg-[var(--color-accent)] flex items-center justify-center flex-shrink-0">
+                            <div className="w-14 h-14 rounded-none bg-black dark:bg-[var(--action)] flex items-center justify-center flex-shrink-0">
                                 <Zap className="w-7 h-7 text-white dark:text-black" />
                             </div>
                             <div>
-                                <p className="text-base font-black uppercase tracking-widest text-[var(--color-accent)] dark:text-[var(--color-accent)] mb-1">Reactietijd</p>
+                                <p className="text-base font-black uppercase tracking-widest text-[var(--ink)] dark:text-[var(--ink)] mb-1">Reactietijd</p>
                                 <p className="text-xl md:text-2xl font-black text-black dark:text-white">Binnen 12 uur</p>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-6">
-                            <div className="w-14 h-14 rounded-none bg-black dark:bg-[var(--color-accent)] flex items-center justify-center flex-shrink-0">
+                            <div className="w-14 h-14 rounded-none bg-black dark:bg-[var(--action)] flex items-center justify-center flex-shrink-0">
                                 <MessageSquare className="w-7 h-7 text-white dark:text-black" />
                             </div>
                             <div>
-                                <p className="text-base font-black uppercase tracking-widest text-[var(--color-accent)] dark:text-[var(--color-accent)] mb-1">Onderwerpen</p>
+                                <p className="text-base font-black uppercase tracking-widest text-[var(--ink)] dark:text-[var(--ink)] mb-1">Onderwerpen</p>
                                 <p className="text-xl md:text-2xl font-black text-black dark:text-white">Support · Feedback · Partnerships</p>
                             </div>
                         </div>
@@ -102,10 +102,10 @@ export const ContactPage: FC = () => {
 
                 {/* Right — form */}
                 <div className="lg:w-3/5 w-full">
-                    <div className="bg-white dark:bg-black border-4 border-black dark:border-[var(--color-accent)] p-10 md:p-16 rounded-none shadow-[15px_15px_0_0_black] dark:shadow-[15px_15px_0_0_var(--color-accent)]">
+                    <div className="bg-white dark:bg-black border-4 border-black dark:border-[var(--line)] p-10 md:p-16 rounded-none shadow-lg dark:shadow-lg">
                         <form className="space-y-10" onSubmit={handleSubmit}>
                             <div className="space-y-4">
-                                <label className="block text-base font-black text-[var(--color-accent)] dark:text-[var(--color-accent)] uppercase tracking-[0.2em]">
+                                <label className="block text-base font-black text-[var(--ink)] dark:text-[var(--ink)] uppercase tracking-[0.2em]">
                                     Naam
                                 </label>
                                 <input
@@ -115,12 +115,12 @@ export const ContactPage: FC = () => {
                                     onChange={(e) => setName(e.target.value)}
                                     placeholder="Jouw naam"
                                     disabled={status !== 'idle'}
-                                    className="w-full bg-white dark:bg-black border-4 border-black dark:border-white/20 p-6 rounded-none font-black text-xl focus:border-[var(--color-accent)] dark:focus:border-[var(--color-accent)] transition-all outline-none text-black dark:text-white placeholder:text-black dark:placeholder:text-white/20 disabled:opacity-50"
+                                    className="w-full bg-white dark:bg-black border-4 border-black dark:border-white/20 p-6 rounded-none font-black text-xl focus:border-[var(--line)] dark:focus:border-[var(--line)] transition-all outline-none text-black dark:text-white placeholder:text-black dark:placeholder:text-white/20 disabled:opacity-50"
                                 />
                             </div>
 
                             <div className="space-y-4">
-                                <label className="block text-base font-black text-[var(--color-accent)] dark:text-[var(--color-accent)] uppercase tracking-[0.2em]">
+                                <label className="block text-base font-black text-[var(--ink)] dark:text-[var(--ink)] uppercase tracking-[0.2em]">
                                     Bericht
                                 </label>
                                 <textarea
@@ -130,7 +130,7 @@ export const ContactPage: FC = () => {
                                     placeholder="Schrijf je bericht..."
                                     disabled={status !== 'idle'}
                                     rows={8}
-                                    className="w-full bg-white dark:bg-black border-4 border-black dark:border-white/20 p-6 rounded-none font-black text-xl focus:border-[var(--color-accent)] dark:focus:border-[var(--color-accent)] transition-all outline-none resize-none text-black dark:text-white placeholder:text-black dark:placeholder:text-white/20 disabled:opacity-50"
+                                    className="w-full bg-white dark:bg-black border-4 border-black dark:border-white/20 p-6 rounded-none font-black text-xl focus:border-[var(--line)] dark:focus:border-[var(--line)] transition-all outline-none resize-none text-black dark:text-white placeholder:text-black dark:placeholder:text-white/20 disabled:opacity-50"
                                 />
                             </div>
 
@@ -144,7 +144,7 @@ export const ContactPage: FC = () => {
                                 className={`w-full py-6 rounded-none font-black uppercase tracking-[0.2em] text-xl transition-all flex items-center justify-center gap-4 ${
                                     status === 'success'
                                         ? 'bg-green-500 text-white'
-                                        : 'bg-black dark:bg-[var(--color-accent)] text-white dark:text-black hover:bg-[var(--color-accent)] hover:text-black dark:hover:bg-white transition-all shadow-xl'
+                                        : 'bg-black dark:bg-[var(--action)] text-white dark:text-black hover:bg-[var(--action)] hover:text-black dark:hover:bg-white transition-all shadow-xl'
                                 } disabled:opacity-40 disabled:cursor-not-allowed`}
                             >
                                 {status === 'idle' && (

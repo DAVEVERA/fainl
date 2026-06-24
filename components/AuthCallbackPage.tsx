@@ -62,8 +62,8 @@ export const AuthCallbackPage: FC = () => {
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-md border-4 border-black dark:border-[#03B390] bg-white dark:bg-black p-8 text-center shadow-[12px_12px_0_0_var(--color-accent)]">
-        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-black text-white dark:bg-[#03B390] dark:text-black">
+      <div className="w-full max-w-md border-4 border-black dark:border-[var(--ink)] bg-white dark:bg-black p-8 text-center shadow-lg">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-black text-white dark:bg-[var(--ink)] dark:text-black">
           {error ? <TriangleAlert className="h-8 w-8" /> : <ShieldCheck className="h-8 w-8" />}
         </div>
         <h1 className="mb-4 text-3xl font-black uppercase tracking-tight text-black dark:text-white">
@@ -76,12 +76,12 @@ export const AuthCallbackPage: FC = () => {
           <button
             type="button"
             onClick={() => navigate('/login', { replace: true })}
-            className="bg-black px-6 py-4 text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-[#03B390] hover:text-black dark:bg-[#03B390] dark:text-black dark:hover:bg-white"
+            className="bg-black px-6 py-4 text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-[var(--ink)] hover:text-black dark:bg-[var(--ink)] dark:text-black dark:hover:bg-white"
           >
             Back to login
           </button>
         ) : (
-          <Loader2 className="mx-auto h-8 w-8 animate-spin text-black dark:text-[#03B390]" />
+          <Loader2 className="mx-auto h-8 w-8 animate-spin text-black dark:text-[var(--ink)]" />
         )}
       </div>
     </div>

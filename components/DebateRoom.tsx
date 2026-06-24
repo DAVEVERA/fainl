@@ -39,7 +39,7 @@ interface DebateRoomProps {
 // Voice names: https://cloud.google.com/text-to-speech/docs/chirp3-hd
 const CHIRP_VOICES = [
   { name: 'nl-NL-Chirp3-HD-Charon', rate: 1.05 },  // Perplexi Pieter — kalm, helder
-  { name: 'nl-NL-Chirp3-HD-Fenrir', rate: 1.08 },  // Jan Deseek — analytisch, zeker
+  { name: 'nl-NL-Chirp3-HD-Fenrir', rate: 1.08 },  // Claudette van Rijn — analytisch, zeker
   { name: 'nl-NL-Chirp3-HD-Aoede',  rate: 1.12 },  // Open Aïsha — expressief, vlot
   { name: 'nl-NL-Chirp3-HD-Orus',   rate: 1.05 },
   { name: 'nl-NL-Chirp3-HD-Puck',   rate: 1.1  },
@@ -454,13 +454,13 @@ export const DebateRoom: FC<DebateRoomProps> = ({
 
   return (
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/85 backdrop-blur-xl">
-      <div className="w-full max-w-3xl h-[100dvh] sm:h-[92vh] bg-white dark:bg-black border-0 sm:border-4 border-black dark:border-[var(--color-accent)]/40 sm:rounded-none flex flex-col overflow-hidden shadow-2xl">
+      <div className="w-full max-w-3xl h-[100dvh] sm:h-[92vh] bg-white dark:bg-black border-0 sm:border-4 border-black dark:border-[var(--line)]/40 sm:rounded-none flex flex-col overflow-hidden shadow-2xl">
 
         {/* ── Header ─────────────────────────────────────────────── */}
-        <div className="bg-black border-b-4 border-[var(--color-accent)] text-white px-3 py-3 sm:px-6 sm:py-5 flex items-center gap-2 sm:gap-4 shrink-0">
-          <Zap className="w-5 h-5 shrink-0 text-[var(--color-accent)] animate-pulse" />
+        <div className="bg-black border-b-4 border-[var(--line)] text-white px-3 py-3 sm:px-6 sm:py-5 flex items-center gap-2 sm:gap-4 shrink-0">
+          <Zap className="w-5 h-5 shrink-0 text-[var(--ink)] animate-pulse" />
           <div className="flex-1 min-w-0">
-            <p className="font-black text-xs sm:text-base uppercase tracking-[0.2em] sm:tracking-[0.35em] text-[var(--color-accent)]">Live Debat</p>
+            <p className="font-black text-xs sm:text-base uppercase tracking-[0.2em] sm:tracking-[0.35em] text-[var(--ink)]">Live Debat</p>
             <p className="font-bold text-base sm:text-xl truncate text-white leading-tight">"{session.query}"</p>
           </div>
           <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
@@ -491,7 +491,7 @@ export const DebateRoom: FC<DebateRoomProps> = ({
         {phase === 'pick' && (
           <div className="flex-1 flex flex-col items-center justify-center gap-6 sm:gap-8 p-4 sm:p-8">
             <div className="text-center">
-              <Timer className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 text-[var(--color-accent)]" />
+              <Timer className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 text-[var(--ink)]" />
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tighter text-black dark:text-white">Hoe lang?</h2>
               <p className="text-sm sm:text-xl text-black dark:text-white/60 mt-2 sm:mt-3 font-bold">Je kunt het debat altijd vroegtijdig beëindigen.</p>
             </div>
@@ -500,20 +500,20 @@ export const DebateRoom: FC<DebateRoomProps> = ({
                 <button type="button" key={opt.label} onClick={() => setDuration(opt.seconds)}
                   className={`py-5 rounded-none border-4 font-black text-base uppercase transition-all ${
                     duration === opt.seconds
-                      ? 'bg-black text-white border-black scale-105 shadow-[6px_6px_0_0_var(--color-accent)]'
-                      : 'bg-white text-black border-black/10 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
+                      ? 'bg-black text-white border-black scale-105 shadow-md'
+                      : 'bg-white text-black border-black/10 hover:border-[var(--line)] hover:text-[var(--ink)]'
                   }`}>
                   {opt.label}
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-lg font-black uppercase tracking-widest text-[var(--color-accent)] text-center">
+            <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-lg font-black uppercase tracking-widest text-[var(--ink)] text-center">
               <span>{readyMembers.length} analisten</span>
               <span>·</span>
               <span className="hidden sm:inline">{nlVoiceCount > 0 ? `${nlVoiceCount} NL stemmen` : 'Standaard stemmen'}</span>
             </div>
             <button type="button" onClick={handleStart}
-              className="px-8 py-4 sm:px-16 sm:py-6 bg-black text-white font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-lg sm:text-xl rounded-none border-2 sm:border-4 border-black hover:bg-[var(--color-accent)] hover:text-black transition-all shadow-[6px_6px_0_0_var(--color-accent)] sm:shadow-[12px_12px_0_0_var(--color-accent)]">
+              className="px-8 py-4 sm:px-16 sm:py-6 bg-black text-white font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-lg sm:text-xl rounded-none border-2 sm:border-4 border-black hover:bg-[var(--action)] hover:text-black transition-all shadow-md sm:shadow-lg">
               Debat starten
             </button>
           </div>
@@ -524,7 +524,7 @@ export const DebateRoom: FC<DebateRoomProps> = ({
           <>
             <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-5 space-y-4 bg-white dark:bg-black">
               {isPaused && (
-                <div className="sticky top-0 text-center py-2 bg-[var(--color-accent)] border-2 border-black rounded-none text-base font-black uppercase tracking-[0.3em] text-black shadow-[6px_6px_0_0_black]">
+                <div className="sticky top-0 text-center py-2 bg-[var(--action)] border-2 border-black rounded-none text-base font-black uppercase tracking-[0.3em] text-black shadow-[6px_6px_0_0_black]">
                   ⏸ Gepauzeerd — hervat of typ hieronder
                 </div>
               )}
@@ -543,14 +543,14 @@ export const DebateRoom: FC<DebateRoomProps> = ({
                         : <img src={member?.avatar} alt={member?.name ?? ''} className="w-full h-full object-cover" />}
                     </div>
                     <div className={`flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[85%] animate-in fade-in slide-in-from-bottom-2 duration-300`}>
-                      <span className="text-sm font-black uppercase tracking-widest text-[var(--color-accent)] mb-1 px-1">
+                      <span className="text-sm font-black uppercase tracking-widest text-[var(--ink)] mb-1 px-1">
                         {isUser ? 'Jij' : member?.name}
                       </span>
                       <div
                         className={`px-4 py-3 sm:px-6 sm:py-4 rounded-none text-base sm:text-xl leading-relaxed font-bold ${
                           isUser
-                            ? 'bg-black text-white border-2 sm:border-4 border-black shadow-[4px_4px_0_0_var(--color-accent)] sm:shadow-[6px_6px_0_0_var(--color-accent)]'
-                            : `bg-white dark:bg-black text-black dark:text-white border-2 sm:border-4 border-black border-l-4 sm:border-l-8 ${accent} cursor-pointer hover:shadow-[4px_4px_0_0_var(--color-accent)] sm:hover:shadow-[6px_6px_0_0_var(--color-accent)] transition-all shadow-md`
+                            ? 'bg-black text-white border-2 sm:border-4 border-black shadow-sm sm:shadow-md'
+                            : `bg-white dark:bg-black text-black dark:text-white border-2 sm:border-4 border-black border-l-4 sm:border-l-8 ${accent} cursor-pointer hover:shadow-sm sm:hover:shadow-md transition-all shadow-md`
                         }`}
                         onClick={() => !isUser && setUserInput(prev => `${prev}> ${member?.name}: "${msg.content.substring(0, 60)}..."\n\n`)}
                         title={!isUser ? 'Klik om te citeren' : ''}
@@ -571,13 +571,13 @@ export const DebateRoom: FC<DebateRoomProps> = ({
                   </div>
                   <div className="flex flex-col items-start max-w-[85%]">
                     {generatingSpeaker && (
-                      <span className="text-xs sm:text-sm font-black uppercase tracking-widest text-[var(--color-accent)] mb-1 px-1 animate-pulse">
+                      <span className="text-xs sm:text-sm font-black uppercase tracking-widest text-[var(--ink)] mb-1 px-1 animate-pulse">
                         {generatingSpeaker.name} aan het woord...
                       </span>
                     )}
-                    <div className="px-4 py-3 sm:px-6 sm:py-4 rounded-none bg-white dark:bg-black border-2 sm:border-4 border-black border-l-4 sm:border-l-8 border-l-[var(--color-accent)] shadow-[6px_6px_0_0_var(--color-accent)]/20 sm:shadow-[8px_8px_0_0_var(--color-accent)]/20 text-base sm:text-xl leading-relaxed text-black dark:text-white min-h-[3rem] sm:min-h-[4rem] font-bold">
+                    <div className="px-4 py-3 sm:px-6 sm:py-4 rounded-none bg-white dark:bg-black border-2 sm:border-4 border-black border-l-4 sm:border-l-8 border-l-zinc-400 shadow-md/20 sm:shadow-md/20 text-base sm:text-xl leading-relaxed text-black dark:text-white min-h-[3rem] sm:min-h-[4rem] font-bold">
                       {streamingText ? (
-                        <span>{streamingText}<span className="inline-block w-1 h-5 sm:h-6 bg-[var(--color-accent)] animate-pulse ml-1 align-middle" /></span>
+                        <span>{streamingText}<span className="inline-block w-1 h-5 sm:h-6 bg-[var(--action)] animate-pulse ml-1 align-middle" /></span>
                       ) : (
                         <div className="flex items-center h-12 sm:h-16 px-2">
                           <NodeLoader shape={loaderShapeForIndex(
@@ -602,7 +602,7 @@ export const DebateRoom: FC<DebateRoomProps> = ({
             {/* ── Invoerbalk ─────────────────────────────────────── */}
             <div className="bg-white dark:bg-black border-t-2 sm:border-t-4 border-black px-2 py-3 sm:px-4 sm:py-6 flex gap-2 sm:gap-3 items-center shrink-0">
               <button type="button" onClick={toggleMic}
-                className={`p-3 sm:p-4 rounded-none border-2 sm:border-4 border-black transition-all shrink-0 ${micActive ? 'bg-[var(--color-accent)] text-black shadow-[0_0_24px_var(--color-accent)] animate-pulse' : 'bg-white text-black hover:bg-[var(--color-accent)] shadow-[4px_4px_0_0_black] sm:shadow-[6px_6px_0_0_black]'}`}
+                className={`p-3 sm:p-4 rounded-none border-2 sm:border-4 border-black transition-all shrink-0 ${micActive ? 'bg-[var(--action)] text-black shadow-lg animate-pulse' : 'bg-white text-black hover:bg-[var(--action)] shadow-[4px_4px_0_0_black] sm:shadow-[6px_6px_0_0_black]'}`}
                 title={micActive ? 'Stop opname' : 'Spreek in'}>
                 {micActive ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
               </button>
@@ -611,10 +611,10 @@ export const DebateRoom: FC<DebateRoomProps> = ({
                 onChange={e => setUserInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
                 placeholder="Doe mee..."
-                className="flex-1 bg-white dark:bg-black border-2 sm:border-4 border-black rounded-none px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-xl font-black text-black dark:text-white placeholder:text-black/20 focus:shadow-[4px_4px_0_0_var(--color-accent)] sm:focus:shadow-[6px_6px_0_0_var(--color-accent)] outline-none transition-all" />
+                className="flex-1 bg-white dark:bg-black border-2 sm:border-4 border-black rounded-none px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-xl font-black text-black dark:text-white placeholder:text-black/20 focus:shadow-sm sm:focus:shadow-md outline-none transition-all" />
 
               <button type="button" onClick={handleSend} disabled={!userInput.trim()} title="Verstuur bericht"
-                className="p-3 sm:p-4 rounded-none bg-black text-white border-2 sm:border-4 border-black hover:bg-[var(--color-accent)] hover:text-black disabled:opacity-20 transition-all shrink-0 shadow-[4px_4px_0_0_black] sm:shadow-[6px_6px_0_0_black]">
+                className="p-3 sm:p-4 rounded-none bg-black text-white border-2 sm:border-4 border-black hover:bg-[var(--action)] hover:text-black disabled:opacity-20 transition-all shrink-0 shadow-[4px_4px_0_0_black] sm:shadow-[6px_6px_0_0_black]">
                 <Send className="w-5 h-5" />
               </button>
               <button type="button" onClick={handleEnd}

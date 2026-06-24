@@ -62,11 +62,11 @@ export const CookieConsent: FC = () => {
       aria-label="Cookie toestemming"
       className="fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:max-w-lg z-[200] animate-in slide-in-from-bottom-4 fade-in duration-500"
     >
-      <div className="bg-white dark:bg-black border-4 border-black dark:border-[var(--color-accent)] rounded-none shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_var(--color-accent)] overflow-hidden">
+      <div className="bg-white dark:bg-black border-4 border-black dark:border-[var(--line)] rounded-none shadow-lg dark:shadow-lg overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-5 pb-3">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black">
+            <div className="p-2 bg-black dark:bg-[var(--action)] text-white dark:text-black">
               <Shield className="w-5 h-5" />
             </div>
             <span className="font-black text-lg md:text-xl uppercase tracking-widest text-black dark:text-white">
@@ -100,7 +100,7 @@ export const CookieConsent: FC = () => {
           {/* Expandable details */}
           <button
             onClick={() => setExpanded(!expanded)}
-            className="mt-3 flex items-center gap-1 text-lg font-black uppercase tracking-widest text-black/40 dark:text-[var(--color-accent)] hover:text-black transition-colors"
+            className="mt-3 flex items-center gap-1 text-lg font-black uppercase tracking-widest text-black/40 dark:text-[var(--ink)] hover:text-black transition-colors"
           >
             {expanded ? (
               <ChevronUp className="w-4 h-4" />
@@ -111,7 +111,7 @@ export const CookieConsent: FC = () => {
           </button>
 
           {expanded && (
-            <div className="mt-4 space-y-4 text-lg text-black dark:text-white/70 leading-relaxed border-t-2 border-black/10 dark:border-[var(--color-accent)]/20 pt-4">
+            <div className="mt-4 space-y-4 text-lg text-black dark:text-white/70 leading-relaxed border-t-2 border-black/10 dark:border-[var(--line)]/20 pt-4">
               <div>
                 <span className="font-black text-black dark:text-white uppercase">
                   Noodzakelijk (altijd actief)
@@ -132,7 +132,7 @@ export const CookieConsent: FC = () => {
               </div>
               <a
                 href="/privacy"
-                className="underline text-black dark:text-[var(--color-accent)] font-black"
+                className="underline text-black dark:text-[var(--ink)] font-black"
               >
                 Volledige privacyverklaring →
               </a>
@@ -150,7 +150,7 @@ export const CookieConsent: FC = () => {
           </button>
           <button
             onClick={accept}
-            className="flex-1 px-4 py-4 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--color-accent)] hover:text-black dark:hover:bg-white transition-all shadow-lg"
+            className="flex-1 px-4 py-4 bg-black dark:bg-[var(--action)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--action)] hover:text-black dark:hover:bg-white transition-all shadow-lg"
           >
             Accepteer
           </button>

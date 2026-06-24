@@ -48,28 +48,28 @@ interface CompositionStageProps {
 const CATEGORIES = ['STANDPUNT', 'ANALYSE', 'NUANCE', 'ADVIES'];
 
 const CAT_BORDER_L: Record<string, string> = {
-  STANDPUNT: 'border-l-[#476DD7]',
+  STANDPUNT: 'border-l-[var(--ink-3)]',
   ANALYSE:   'border-l-green-500',
   NUANCE:    'border-l-amber-500',
   ADVIES:    'border-l-red-500',
 };
 
 const CAT_BG: Record<string, string> = {
-  STANDPUNT: 'bg-[#476DD7]',
+  STANDPUNT: 'bg-[var(--ink-3)]',
   ANALYSE:   'bg-green-500',
   NUANCE:    'bg-amber-500',
   ADVIES:    'bg-red-500',
 };
 
 const CAT_TEXT: Record<string, string> = {
-  STANDPUNT: 'text-[#476DD7]',
+  STANDPUNT: 'text-[var(--ink-3)]',
   ANALYSE:   'text-green-500',
   NUANCE:    'text-amber-500',
   ADVIES:    'text-red-500',
 };
 
 const CAT_BORDER_B: Record<string, string> = {
-  STANDPUNT: 'border-b-[#476DD7]',
+  STANDPUNT: 'border-b-[var(--ink-3)]',
   ANALYSE:   'border-b-green-500',
   NUANCE:    'border-b-amber-500',
   ADVIES:    'border-b-red-500',
@@ -93,11 +93,11 @@ const DraggableSourceCard: FC<{
     <div
       ref={setNodeRef}
       className={`group relative border-l-[3px] border-2 overflow-hidden transition-all duration-200 select-none
-        ${CAT_BORDER_L[item.category] ?? 'border-l-[var(--color-accent)]'}
+        ${CAT_BORDER_L[item.category] ?? 'border-l-zinc-400'}
         ${isDragging ? 'opacity-20' : 'opacity-100'}
         ${isAdded
           ? 'border-black/8 dark:border-white/8 bg-black/2 dark:bg-white/2 cursor-default'
-          : 'bg-white dark:bg-zinc-900 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white hover:shadow-[4px_4px_0_0_var(--color-accent)] cursor-grab active:cursor-grabbing'
+          : 'bg-white dark:bg-zinc-900 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white hover:shadow-sm cursor-grab active:cursor-grabbing'
         }`}
       {...(!isAdded ? { ...attributes, ...listeners } : {})}
     >
@@ -112,7 +112,7 @@ const DraggableSourceCard: FC<{
           {member.name}
         </span>
         {isAdded ? (
-          <span className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-[var(--color-accent)] shrink-0">
+          <span className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-[var(--ink)] shrink-0">
             <CheckIcon className="w-2.5 h-2.5" />
             op canvas
           </span>
@@ -122,7 +122,7 @@ const DraggableSourceCard: FC<{
             title={`${item.category} van ${member.name} toevoegen`}
             onPointerDown={e => e.stopPropagation()}
             onClick={e => { e.stopPropagation(); onAdd(); }}
-            className="opacity-60 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity bg-[var(--color-accent)] text-white p-1 shrink-0 hover:scale-110 active:scale-95"
+            className="opacity-60 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity bg-[var(--action)] text-white p-1 shrink-0 hover:scale-110 active:scale-95"
           >
             <Plus className="w-3 h-3" />
           </button>
@@ -179,8 +179,8 @@ const SortableCanvasCard: FC<{
   return (
     <div
       ref={mergedRef}
-      className={`group relative border-l-[4px] border-2 border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 hover:border-black dark:hover:border-white hover:shadow-[4px_4px_0_0_var(--color-accent)] transition-shadow duration-200
-        ${CAT_BORDER_L[item.category] ?? 'border-l-[var(--color-accent)]'}
+      className={`group relative border-l-[4px] border-2 border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 hover:border-black dark:hover:border-white hover:shadow-sm transition-shadow duration-200
+        ${CAT_BORDER_L[item.category] ?? 'border-l-zinc-400'}
         ${isDragging ? 'opacity-0' : 'opacity-100'}`}
     >
       {/* Header */}
@@ -198,7 +198,7 @@ const SortableCanvasCard: FC<{
         </div>
 
         {/* Category badge */}
-        <span className={`text-[8px] font-black uppercase tracking-[0.2em] px-2 py-0.5 text-white shrink-0 ${CAT_BG[item.category] ?? 'bg-[var(--color-accent)]'}`}>
+        <span className={`text-[8px] font-black uppercase tracking-[0.2em] px-2 py-0.5 text-white shrink-0 ${CAT_BG[item.category] ?? 'bg-[var(--action)]'}`}>
           {item.category}
         </span>
 
@@ -230,9 +230,9 @@ const SortableCanvasCard: FC<{
 // ─── DragOverlayCard ──────────────────────────────────────────────────────────
 
 const DragOverlayCard: FC<{ item: CanvasItem; member: CouncilMember }> = ({ item, member }) => (
-  <div className={`border-l-[4px] border-2 border-black bg-white dark:bg-zinc-900 shadow-[10px_10px_0_0_rgba(71,109,215,0.5)] rotate-[0.8deg] max-w-xs pointer-events-none ${CAT_BORDER_L[item.category] ?? 'border-l-[var(--color-accent)]'}`}>
+  <div className={`border-l-[4px] border-2 border-black bg-white dark:bg-zinc-900 shadow-md rotate-[0.8deg] max-w-xs pointer-events-none ${CAT_BORDER_L[item.category] ?? 'border-l-zinc-400'}`}>
     <div className="flex items-center gap-2 px-3 py-2.5 border-b border-black/10">
-      <span className={`text-[8px] font-black uppercase tracking-widest px-2 py-0.5 text-white shrink-0 ${CAT_BG[item.category] ?? 'bg-[var(--color-accent)]'}`}>
+      <span className={`text-[8px] font-black uppercase tracking-widest px-2 py-0.5 text-white shrink-0 ${CAT_BG[item.category] ?? 'bg-[var(--action)]'}`}>
         {item.category}
       </span>
       <img src={member.avatar} alt="" className="w-4 h-4 rounded-full object-cover" />
@@ -249,14 +249,14 @@ const DragOverlayCard: FC<{ item: CanvasItem; member: CouncilMember }> = ({ item
 const EmptyDropZone: FC<{ isOver: boolean }> = ({ isOver }) => (
   <div className={`flex flex-col items-center justify-center h-60 border-[3px] border-dashed transition-all duration-300 ${
     isOver
-      ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/5 scale-[1.01]'
+      ? 'border-[var(--line)] bg-[var(--action)]/5 scale-[1.01]'
       : 'border-black/12 dark:border-white/12'
   }`}>
     <Layers className={`w-9 h-9 mb-3 transition-colors duration-300 ${
-      isOver ? 'text-[var(--color-accent)]' : 'text-black/18 dark:text-white/18'
+      isOver ? 'text-[var(--ink)]' : 'text-black/18 dark:text-white/18'
     }`} />
     <p className={`text-xs font-black uppercase tracking-widest transition-colors ${
-      isOver ? 'text-[var(--color-accent)]' : 'text-black/25 dark:text-white/25'
+      isOver ? 'text-[var(--ink)]' : 'text-black/25 dark:text-white/25'
     }`}>
       {isOver ? 'Laat los om toe te voegen' : 'Canvas is leeg'}
     </p>
@@ -398,12 +398,12 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
 
         {/* ── Header ─────────────────────────────────────────────── */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[var(--color-accent)] text-white text-[9px] font-black uppercase tracking-[0.3em] border-2 border-black">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[var(--action)] text-white text-[9px] font-black uppercase tracking-[0.3em] border-2 border-black">
             <Sparkles className="w-3 h-3" />
             Sketchboard · Drag &amp; Drop Compositie
           </div>
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-black dark:text-white">
-            Smeed jouw <span className="text-[var(--color-accent)]">eindoordeel</span>
+            Smeed jouw <span className="text-[var(--ink)]">eindoordeel</span>
           </h2>
           <p className="text-sm text-black/45 dark:text-white/45 font-bold max-w-xl mx-auto">
             Alle inzichten staan al klaar op het canvas. Verwijder wat je niet nodig hebt, herschik naar prioriteit — of vraag Victor meteen om zijn eindoordeel.
@@ -419,7 +419,7 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
               <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/60">
                 Compartimenten
               </span>
-              <span className="text-[11px] font-black text-[var(--color-accent)]">
+              <span className="text-[11px] font-black text-[var(--ink)]">
                 {sourceItems.length} beschikbaar
               </span>
             </div>
@@ -437,13 +437,13 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
                     onClick={() => setActiveTab(cat)}
                     className={`flex-1 py-3 relative border-b-2 -mb-0.5 transition-all ${
                       isActive
-                        ? `${CAT_BORDER_B[cat] ?? 'border-b-[var(--color-accent)]'} ${CAT_TEXT[cat] ?? 'text-[var(--color-accent)]'}`
+                        ? `${CAT_BORDER_B[cat] ?? 'border-b-zinc-400'} ${CAT_TEXT[cat] ?? 'text-[var(--ink)]'}`
                         : 'border-b-transparent text-black/40 dark:text-white/35 hover:text-black dark:hover:text-white'
                     }`}
                   >
                     <span className="text-[10px] font-black uppercase tracking-wider block leading-tight">{cat}</span>
                     {added > 0 ? (
-                      <span className={`text-[9px] font-black block mt-0.5 ${CAT_TEXT[cat] ?? 'text-[var(--color-accent)]'}`}>{added}/{total}</span>
+                      <span className={`text-[9px] font-black block mt-0.5 ${CAT_TEXT[cat] ?? 'text-[var(--ink)]'}`}>{added}/{total}</span>
                     ) : (
                       <span className="text-[9px] text-black/25 dark:text-white/20 block mt-0.5">{total}</span>
                     )}
@@ -481,7 +481,7 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
                 type="button"
                 onClick={() => tabItems.forEach(i => { if (!inCanvas(i.id)) addItem(i); })}
                 disabled={tabItems.every(i => inCanvas(i.id))}
-                className="w-full text-[9px] font-black uppercase tracking-widest text-black/30 dark:text-white/30 hover:text-[var(--color-accent)] border border-dashed border-black/10 dark:border-white/10 hover:border-[var(--color-accent)] py-2.5 transition-all disabled:opacity-25 disabled:pointer-events-none"
+                className="w-full text-[9px] font-black uppercase tracking-widest text-black/30 dark:text-white/30 hover:text-[var(--ink)] border border-dashed border-black/10 dark:border-white/10 hover:border-[var(--line)] py-2.5 transition-all disabled:opacity-25 disabled:pointer-events-none"
               >
                 + Alle {activeTab} toevoegen aan canvas
               </button>
@@ -502,7 +502,7 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
                   <button
                     type="button"
                     onClick={() => setShowPreview(p => !p)}
-                    className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-black/40 dark:text-white/35 hover:text-[var(--color-accent)] transition-colors"
+                    className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-black/40 dark:text-white/35 hover:text-[var(--ink)] transition-colors"
                   >
                     {showPreview ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                     {showPreview ? 'Verberg' : 'Preview'}
@@ -510,7 +510,7 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
                   <button
                     type="button"
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-black/40 dark:text-white/35 hover:text-[var(--color-accent)] transition-colors"
+                    className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-black/40 dark:text-white/35 hover:text-[var(--ink)] transition-colors"
                   >
                     {copied
                       ? <CheckIcon className="w-3.5 h-3.5 text-green-500" />
@@ -535,7 +535,7 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
                 ref={dropRef}
                 className={`flex flex-col gap-3 min-h-60 transition-all duration-200 ${
                   isOver && canvasItems.length === 0
-                    ? 'ring-2 ring-[var(--color-accent)] ring-offset-4'
+                    ? 'ring-2 ring-zinc-300'
                     : ''
                 }`}
               >
@@ -561,7 +561,7 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
             {/* Live Preview */}
             {showPreview && canvasItems.length > 0 && (
               <div className="border-2 border-black/12 dark:border-white/12 p-6 bg-white dark:bg-zinc-900 animate-in slide-in-from-top-3 duration-250">
-                <div className="text-[9px] font-black uppercase tracking-[0.25em] text-[var(--color-accent)] mb-4">
+                <div className="text-[9px] font-black uppercase tracking-[0.25em] text-[var(--ink)] mb-4">
                   Live Preview — Jouw compositie
                 </div>
                 <div className="prose prose-sm dark:prose-invert max-w-none opacity-80
@@ -576,10 +576,10 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
         </div>
 
         {/* ── Action Bar ─────────────────────────────────────────── */}
-        <div className="border-4 border-black dark:border-[var(--color-accent)] bg-white dark:bg-black p-6 md:p-8 shadow-[8px_8px_0_0_black] dark:shadow-[8px_8px_0_0_var(--color-accent)]">
+        <div className="border-4 border-black dark:border-[var(--line)] bg-white dark:bg-black p-6 md:p-8 shadow-[8px_8px_0_0_black] dark:shadow-md">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h4 className="text-sm font-black uppercase tracking-widest text-[var(--color-accent)]">
+              <h4 className="text-sm font-black uppercase tracking-widest text-[var(--ink)]">
                 {canvasItems.length > 0
                   ? `${canvasItems.length} compartiment${canvasItems.length !== 1 ? 'en' : ''} in jouw compositie`
                   : 'Canvas is leeg'}
@@ -606,7 +606,7 @@ export const CompositionStage: FC<CompositionStageProps> = ({ responses, members
                 type="button"
                 onClick={() => onCompose(composed)}
                 disabled={canvasItems.length === 0}
-                className="flex items-center gap-3 px-8 py-4 bg-black text-white font-black text-sm uppercase tracking-widest hover:bg-[var(--color-accent)] hover:text-black transition-all hover:scale-105 active:scale-95 shadow-[6px_6px_0_0_var(--color-accent)] border-4 border-black disabled:opacity-25 disabled:pointer-events-none disabled:hover:scale-100"
+                className="flex items-center gap-3 px-8 py-4 bg-black text-white font-black text-sm uppercase tracking-widest hover:bg-[var(--action)] hover:text-black transition-all hover:scale-105 active:scale-95 shadow-md border-4 border-black disabled:opacity-25 disabled:pointer-events-none disabled:hover:scale-100"
               >
                 <Gavel className="w-5 h-5" />
                 Vraag Victor om oordeel

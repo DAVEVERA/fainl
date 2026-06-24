@@ -176,25 +176,25 @@ export const FAQPage: FC = () => {
         {FAQS.map((faq, idx) => (
           <div
             key={idx}
-            className={`bg-white dark:bg-black border-4 border-black dark:border-[var(--color-accent)] rounded-none overflow-hidden transition-all shadow-[12px_12px_0_0_black] dark:shadow-[12px_12px_0_0_var(--color-accent)] ${openIndex === idx ? 'ring-4 ring-[var(--color-accent)]' : ''}`}
+            className={`bg-white dark:bg-black border-4 border-black dark:border-[var(--line)] rounded-none overflow-hidden transition-all shadow-[12px_12px_0_0_black] dark:shadow-lg ${openIndex === idx ? 'ring-4 ring-zinc-400' : ''}`}
           >
             <button
               onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               className="w-full text-left p-8 md:p-12 flex items-center justify-between group"
             >
               <div className="flex items-center gap-6 md:gap-10">
-                <div className={`p-4 rounded-none transition-colors ${openIndex === idx ? 'bg-[var(--color-accent)] text-black' : 'bg-black dark:bg-[var(--color-accent)] text-white dark:text-black'}`}>
+                <div className={`p-4 rounded-none transition-colors ${openIndex === idx ? 'bg-[var(--action)] text-black' : 'bg-black dark:bg-[var(--action)] text-white dark:text-black'}`}>
                   <faq.icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
                 <h3 className="text-xl md:text-3xl font-black uppercase tracking-tight leading-tight text-black dark:text-white">{faq.q}</h3>
               </div>
               <div className={`transition-transform duration-300 ${openIndex === idx ? 'rotate-180' : ''}`}>
-                <ChevronDown className="w-8 h-8 md:w-12 md:h-12 text-black dark:text-[var(--color-accent)]" />
+                <ChevronDown className="w-8 h-8 md:w-12 md:h-12 text-black dark:text-[var(--ink)]" />
               </div>
             </button>
             {openIndex === idx && (
               <div className="px-8 md:px-12 pb-10 md:pb-16 animate-in slide-in-from-top-4 duration-300">
-                <div className="pt-8 border-t-4 border-black/10 dark:border-[var(--color-accent)]/20 text-lg md:text-2xl font-bold text-black dark:text-white/80 leading-relaxed">
+                <div className="pt-8 border-t-4 border-black/10 dark:border-[var(--line)]/20 text-lg md:text-2xl font-bold text-black dark:text-white/80 leading-relaxed">
                   {faq.a}
                 </div>
               </div>

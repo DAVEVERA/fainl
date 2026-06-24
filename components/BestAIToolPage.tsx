@@ -130,20 +130,20 @@ export const BestAIToolPage: FC = () => {
       </nav>
 
       <section className="max-w-4xl mx-auto px-5 sm:px-8 pt-10 pb-14 md:pt-14 md:pb-20">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--action)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
           Vergelijking — Lokale SEO
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
           Best AI tool Nederland:{' '}
-          <span className="text-[var(--color-accent)]">ChatGPT, Gemini, Claude of FAINL?</span>
+          <span className="text-[var(--ink)]">ChatGPT, Gemini, Claude of FAINL?</span>
         </h1>
         <p className="text-xl sm:text-2xl text-black dark:text-white/80 leading-relaxed max-w-2xl mb-8">
           De markt voor AI-tools groeit snel — maar welke past het best bij jouw gebruik?
           ChatGPT, Gemini en Claude zijn elk sterk op eigen terrein.{' '}
-          <strong className="text-black dark:text-[var(--color-accent)]">FAINL combineert alle drie in één sessie voor het best haalbare antwoord.</strong>
+          <strong className="text-black dark:text-[var(--ink)]">FAINL combineert alle drie in één sessie voor het best haalbare antwoord.</strong>
         </p>
         <button type="button" onClick={() => navigate('/mission')}
-          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--color-accent)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
+          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--action)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--action)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
           Probeer FAINL gratis
           <ArrowRight className="w-5 h-5" />
         </button>
@@ -156,22 +156,22 @@ export const BestAIToolPage: FC = () => {
             <div key={tool.name}
               className={`border-4 rounded-none p-8 bg-white dark:bg-black relative ${
                 tool.highlight
-                  ? 'border-[var(--color-accent)] shadow-[10px_10px_0_0_var(--color-accent)]'
-                  : 'border-black dark:border-white/40 shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_var(--color-accent)]'
+                  ? 'border-[var(--line)] shadow-lg'
+                  : 'border-black dark:border-white/40 shadow-md dark:shadow-lg'
               }`}>
               {tool.highlight && (
-                <div className="absolute -top-4 left-6 flex items-center gap-2 px-4 py-1.5 bg-[var(--color-accent)] text-black">
+                <div className="absolute -top-4 left-6 flex items-center gap-2 px-4 py-1.5 bg-[var(--action)] text-black">
                   <Crown className="w-4 h-4" />
                   <span className="text-lg font-black uppercase tracking-widest">Aanbevolen</span>
                 </div>
               )}
-              <h3 className={`font-black text-2xl uppercase tracking-tight mb-2 ${tool.highlight ? 'text-[var(--color-accent)]' : 'text-black dark:text-white'}`}>{tool.name}</h3>
+              <h3 className={`font-black text-2xl uppercase tracking-tight mb-2 ${tool.highlight ? 'text-[var(--ink)]' : 'text-black dark:text-white'}`}>{tool.name}</h3>
               <p className="text-lg text-black dark:text-white/50 mb-6">{tool.tagline}</p>
 
               <div className="space-y-3 mb-6">
                 {tool.pros.map(p => (
                   <div key={p} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[var(--color-accent)] shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-[var(--ink)] shrink-0 mt-0.5" />
                     <span className="text-lg text-black dark:text-white/80">{p}</span>
                   </div>
                 ))}
@@ -200,13 +200,13 @@ export const BestAIToolPage: FC = () => {
 
       <section aria-label="Vergelijkingstabel" className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
         <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white mb-6">Vergelijkingstabel</h2>
-        <div className="overflow-x-auto rounded-none border-4 border-black dark:border-[var(--color-accent)]">
+        <div className="overflow-x-auto rounded-none border-4 border-black dark:border-[var(--line)]">
           <table className="w-full text-lg bg-white dark:bg-black">
             <thead>
-              <tr className="border-b-4 border-black dark:border-[var(--color-accent)]">
+              <tr className="border-b-4 border-black dark:border-[var(--line)]">
                 <th className="text-left px-6 py-5 font-black uppercase tracking-tight text-lg text-black dark:text-white/40">Eigenschap</th>
                 {['ChatGPT', 'Gemini', 'Claude', 'FAINL'].map(name => (
-                  <th key={name} className={`px-4 py-5 font-black uppercase tracking-tight text-lg text-center ${name === 'FAINL' ? 'text-[var(--color-accent)]' : 'text-black dark:text-white'}`}>{name}</th>
+                  <th key={name} className={`px-4 py-5 font-black uppercase tracking-tight text-lg text-center ${name === 'FAINL' ? 'text-[var(--ink)]' : 'text-black dark:text-white'}`}>{name}</th>
                 ))}
               </tr>
             </thead>

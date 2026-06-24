@@ -162,7 +162,7 @@ const Dots: FC<{ rating: Rating }> = ({ rating }) => (
     {([1, 2, 3, 4, 5] as Rating[]).map(i => (
       <div
         key={i}
-        className={`w-3.5 h-3.5 rounded-full ${i <= rating ? 'bg-[#03B390]' : 'bg-black/10 dark:bg-white/20'}`}
+        className={`w-3.5 h-3.5 rounded-full ${i <= rating ? 'bg-[var(--ink)]' : 'bg-black/10 dark:bg-white/20'}`}
       />
     ))}
   </div>
@@ -202,24 +202,24 @@ export const ComparePage: FC = () => {
 
       {/* ── Hero ── */}
       <section className="max-w-4xl mx-auto px-5 sm:px-8 pt-10 pb-14 md:pt-14 md:pb-20">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[#03B390] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--ink)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
           Vergelijking 2026
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
           ChatGPT, Gemini of Claude:{' '}
-          <span className="text-[#03B390]">welke AI wint?</span>
+          <span className="text-[var(--ink)]">welke AI wint?</span>
         </h1>
         <p className="text-xl sm:text-2xl text-black dark:text-white/80 leading-relaxed max-w-2xl mb-8">
           De drie populairste AI-modellen geven elk een ander antwoord op dezelfde vraag.
           ChatGPT scoort op creativiteit, Gemini op actuele data, Claude op nuance en veiligheid.{' '}
-          <strong className="text-black dark:text-[#03B390]">
+          <strong className="text-black dark:text-[var(--ink)]">
             De eerlijke conclusie: het beste model hangt af van je vraag.
           </strong>
         </p>
         <button
           type="button"
           onClick={() => navigate('/mission')}
-          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[#03B390] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[#03B390] hover:text-black dark:hover:bg-white transition-all shadow-lg"
+          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--ink)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--ink)] hover:text-black dark:hover:bg-white transition-all shadow-lg"
         >
           Probeer gratis — alle drie tegelijk
           <ArrowRight className="w-5 h-5" />
@@ -235,7 +235,7 @@ export const ComparePage: FC = () => {
           {MODELS.map(model => (
             <div
               key={model.name}
-              className="border-4 border-black dark:border-[#03B390] rounded-none overflow-hidden shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_#03B390]"
+              className="border-4 border-black dark:border-[var(--ink)] rounded-none overflow-hidden shadow-md dark:shadow-md"
             >
               <div className={`${model.headerBg} px-5 py-4 flex items-center gap-3`}>
                 <img src={model.logo} alt={model.name} className="w-7 h-7 object-contain shrink-0" />
@@ -249,12 +249,12 @@ export const ComparePage: FC = () => {
                 <div className="space-y-3 mb-4">
                   {model.strengths.map(s => (
                     <div key={s} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-[#03B390] shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-[var(--ink)] shrink-0 mt-0.5" />
                       <span className="text-lg text-black dark:text-white/80 leading-snug">{s}</span>
                     </div>
                   ))}
                 </div>
-                <div className="border-t-2 border-black/10 dark:border-[#03B390]/20 pt-4 space-y-3">
+                <div className="border-t-2 border-black/10 dark:border-[var(--ink)]/20 pt-4 space-y-3">
                   {model.weaknesses.map(w => (
                     <div key={w} className="flex items-start gap-3">
                       <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
@@ -273,10 +273,10 @@ export const ComparePage: FC = () => {
         <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white mb-6">
           Vergelijkingstabel
         </h2>
-        <div className="overflow-x-auto rounded-none border-4 border-black dark:border-[#03B390] shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_#03B390]">
+        <div className="overflow-x-auto rounded-none border-4 border-black dark:border-[var(--ink)] shadow-md dark:shadow-md">
           <table className="w-full text-lg">
             <thead>
-              <tr className="bg-black dark:bg-[#03B390]">
+              <tr className="bg-black dark:bg-[var(--ink)]">
                 <th className="text-left px-6 py-5 text-white dark:text-black text-lg font-black uppercase tracking-widest w-1/2">Criterium</th>
                 <th className="px-4 py-5 text-white dark:text-black text-lg font-black uppercase tracking-widest text-center">ChatGPT</th>
                 <th className="px-4 py-5 text-white dark:text-black text-lg font-black uppercase tracking-widest text-center">Gemini</th>
@@ -302,7 +302,7 @@ export const ComparePage: FC = () => {
 
       {/* ── FAINL CTA block ── */}
       <section aria-label="Waarom FAINL" className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
-        <div className="bg-black dark:bg-[#03B390] rounded-none p-10 md:p-16 shadow-[15px_15px_0_0_#03B390] dark:shadow-[15px_15px_0_0_black]">
+        <div className="bg-black dark:bg-[var(--ink)] rounded-none p-10 md:p-16 shadow-lg dark:shadow-lg">
           <div className="flex items-start gap-6 mb-10">
             <MinusCircle className="w-10 h-10 text-white dark:text-black shrink-0 mt-1" />
             <div>
@@ -324,7 +324,7 @@ export const ComparePage: FC = () => {
               { step: '03', label: "Chairman's Verdict", desc: 'Eén gewogen eindoordeel met nuance' },
             ].map(item => (
               <div key={item.step} className="bg-white/10 dark:bg-black/10 p-6 border-2 border-white/20 dark:border-black/20">
-                <p className="text-[#03B390] dark:text-black font-black text-xl uppercase tracking-[0.3em] mb-2">{item.step}</p>
+                <p className="text-[var(--ink)] dark:text-black font-black text-xl uppercase tracking-[0.3em] mb-2">{item.step}</p>
                 <p className="font-black text-xl uppercase tracking-tight text-white dark:text-black mb-2">{item.label}</p>
                 <p className="text-white/60 dark:text-black text-lg leading-relaxed">{item.desc}</p>
               </div>
@@ -333,7 +333,7 @@ export const ComparePage: FC = () => {
           <button
             type="button"
             onClick={() => navigate('/mission')}
-            className="inline-flex items-center gap-4 px-10 py-5 bg-[#03B390] dark:bg-black text-black dark:text-white font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-white hover:text-black transition-all shadow-lg"
+            className="inline-flex items-center gap-4 px-10 py-5 bg-[var(--ink)] dark:bg-black text-black dark:text-white font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-white hover:text-black transition-all shadow-lg"
           >
             Start gratis — twee sessies, geen account nodig
             <ArrowRight className="w-5 h-5" />

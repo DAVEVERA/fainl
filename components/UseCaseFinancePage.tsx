@@ -104,20 +104,20 @@ export const UseCaseFinancePage: FC = () => {
       </nav>
 
       <section className="max-w-4xl mx-auto px-5 sm:px-8 pt-10 pb-14 md:pt-14 md:pb-20">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-[var(--action)] text-white dark:text-black text-lg font-black uppercase tracking-[0.25em] rounded-none mb-6">
           Use case — Finance
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
           AI voor finance:{' '}
-          <span className="text-[var(--color-accent)]">geen blinde vlekken meer.</span>
+          <span className="text-[var(--ink)]">geen blinde vlekken meer.</span>
         </h1>
         <p className="text-xl sm:text-2xl text-black dark:text-white/80 leading-relaxed max-w-2xl mb-8">
           Financiële beslissingen zijn te belangrijk voor één perspectief. Drie AI-modellen analyseren
           onafhankelijk je investering, risico of strategie vanuit hun eigen financiële lens.{' '}
-          <strong className="text-black dark:text-[var(--color-accent)]">FAINL legt tegenstrijdigheden bloot en synthetiseert het meest onderbouwde financiële advies.</strong>
+          <strong className="text-black dark:text-[var(--ink)]">FAINL legt tegenstrijdigheden bloot en synthetiseert het meest onderbouwde financiële advies.</strong>
         </p>
         <button type="button" onClick={() => navigate('/mission')}
-          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--color-accent)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--color-accent)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
+          className="inline-flex items-center gap-4 px-10 py-5 bg-black dark:bg-[var(--action)] text-white dark:text-black font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-[var(--action)] hover:text-black dark:hover:bg-white transition-all shadow-lg">
           Analyseer je financiële vraag — gratis starten
           <ArrowRight className="w-5 h-5" />
         </button>
@@ -127,16 +127,16 @@ export const UseCaseFinancePage: FC = () => {
         <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white mb-6">Toepassingen</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {USE_CASES.map(uc => (
-            <div key={uc.title} className="border-4 border-black dark:border-[var(--color-accent)] rounded-none p-8 bg-white dark:bg-black shadow-[10px_10px_0_0_black] dark:shadow-[10px_10px_0_0_var(--color-accent)]">
+            <div key={uc.title} className="border-4 border-black dark:border-[var(--line)] rounded-none p-8 bg-white dark:bg-black shadow-md dark:shadow-lg">
               <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-black dark:bg-[var(--color-accent)] rounded-none">
+                <div className="p-3 bg-black dark:bg-[var(--action)] rounded-none">
                   <uc.icon className="w-6 h-6 text-white dark:text-black" />
                 </div>
                 <h3 className="font-black text-xl uppercase tracking-tight text-black dark:text-white">{uc.title}</h3>
               </div>
               <p className="text-lg text-black dark:text-white/70 leading-relaxed mb-6">{uc.desc}</p>
-              <div className="bg-black/5 dark:bg-[var(--color-accent)]/10 rounded-none px-6 py-4 border-l-4 border-black dark:border-[var(--color-accent)]">
-                <p className="text-sm font-black uppercase tracking-widest text-[var(--color-accent)] dark:text-[var(--color-accent)] mb-1">Voorbeeldvraag</p>
+              <div className="bg-black/5 dark:bg-[var(--action)]/10 rounded-none px-6 py-4 border-l-4 border-black dark:border-[var(--line)]">
+                <p className="text-sm font-black uppercase tracking-widest text-[var(--ink)] dark:text-[var(--ink)] mb-1">Voorbeeldvraag</p>
                 <p className="text-lg text-black dark:text-white/80 italic leading-relaxed font-bold">"{uc.example}"</p>
               </div>
             </div>
@@ -145,10 +145,10 @@ export const UseCaseFinancePage: FC = () => {
       </section>
 
       <section aria-label="CTA" className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
-        <div className="bg-black dark:bg-[var(--color-accent)] rounded-none p-10 md:p-16 shadow-[15px_15px_0_0_var(--color-accent)] dark:shadow-[15px_15px_0_0_black]">
+        <div className="bg-black dark:bg-[var(--action)] rounded-none p-10 md:p-16 shadow-lg dark:shadow-lg">
           <h2 className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white dark:text-black mb-6 leading-tight">
             Betere financiële beslissingen{' '}
-            <span className="text-[var(--color-accent)] dark:text-black">beginnen met consensus.</span>
+            <span className="text-[var(--ink)] dark:text-black">beginnen met consensus.</span>
           </h2>
           <p className="text-white/80 dark:text-black/80 leading-relaxed text-xl md:text-2xl mb-10">
             Stel je financiële vraag aan FAINL. Drie modellen analyseren onafhankelijk, bekritiseren
@@ -156,7 +156,7 @@ export const UseCaseFinancePage: FC = () => {
             financiële advies — in één sessie.
           </p>
           <button type="button" onClick={() => navigate('/mission')}
-            className="inline-flex items-center gap-4 px-10 py-5 bg-[var(--color-accent)] dark:bg-black text-black dark:text-white font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-white hover:text-black transition-all shadow-lg">
+            className="inline-flex items-center gap-4 px-10 py-5 bg-[var(--action)] dark:bg-black text-black dark:text-white font-black text-lg md:text-xl uppercase tracking-widest rounded-none hover:bg-white hover:text-black transition-all shadow-lg">
             Start gratis — twee sessies, geen account nodig
             <ArrowRight className="w-5 h-5" />
           </button>
