@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Settings2 } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 interface TopBarProps {
   onMenuOpen?: () => void;
@@ -8,10 +8,14 @@ interface TopBarProps {
 export const TopBar: FC<TopBarProps> = ({ onMenuOpen }) => {
   return (
     <div className="mobile-topbar">
-      <span className="mobile-topbar-brand">FAINL</span>
+      <video
+        src="/FAINLANI.mp4"
+        autoPlay muted loop playsInline
+        className="mobile-topbar-logo"
+      />
       {onMenuOpen && (
-        <button onClick={onMenuOpen} className="mobile-topbar-btn" aria-label="Menu">
-          <Settings2 style={{ width: 16, height: 16 }} />
+        <button onClick={onMenuOpen} className="mobile-topbar-btn" aria-label="Menu openen">
+          <Menu style={{ width: 20, height: 20 }} />
         </button>
       )}
     </div>

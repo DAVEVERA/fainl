@@ -14,10 +14,12 @@ import {
   CreditCard,
   Mail,
   LayoutDashboard,
+  Heart,
 } from 'lucide-react';
 
 interface SidebarProps {
   collapsed: boolean;
+  mobileOpen?: boolean;
   onToggle: () => void;
   darkMode: boolean;
   onToggleTheme: () => void;
@@ -60,6 +62,7 @@ const groupByDate = (items: { id: string; query: string; timestamp?: number }[])
 
 export const Sidebar: FC<SidebarProps> = ({
   collapsed,
+  mobileOpen,
   onToggle,
   darkMode,
   onToggleTheme,
@@ -85,7 +88,7 @@ export const Sidebar: FC<SidebarProps> = ({
   const groups = useMemo(() => groupByDate(filtered), [filtered]);
 
   return (
-    <aside className={`sidebar${collapsed ? ' collapsed' : ''}`}>
+    <aside className={`sidebar${collapsed ? ' collapsed' : ''}${mobileOpen ? ' mobile-open' : ''}`}>
       <button
         className="sidebar-toggle-btn"
         onClick={onToggle}
@@ -192,6 +195,9 @@ export const Sidebar: FC<SidebarProps> = ({
                 </button>
                 <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/contact'); }}>
                   <Mail style={{ width: 14, height: 14 }} /> Contact
+                </button>
+                <button className="flyout-item" onClick={() => { setFlyoutOpen(false); navigate('/inclusie'); }}>
+                  <Heart style={{ width: 14, height: 14 }} /> Inclusieprogramma
                 </button>
                 {isLoggedIn && (
                   <>

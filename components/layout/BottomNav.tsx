@@ -2,18 +2,17 @@ import { FC } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   MessageSquare,
-  Clock,
-  Swords,
-  Coins,
-  HelpCircle,
+  LayoutDashboard,
+  CreditCard,
+  Heart,
+  Plus,
 } from 'lucide-react';
 
 const items = [
   { path: '/', label: 'Chat', icon: MessageSquare },
-  { path: '/mission', label: 'Antwoorden', icon: Clock },
-  { path: '/debates', label: 'Beraadslagen', icon: Swords },
-  { path: '/tokens', label: 'Prijzen', icon: Coins },
-  { path: '/faq', label: 'FAQ', icon: HelpCircle },
+  { path: '/dashboard', label: 'Sessies', icon: LayoutDashboard },
+  { path: '/tokens', label: 'Credits', icon: CreditCard },
+  { path: '/inclusie', label: 'Inclusie', icon: Heart },
 ];
 
 export const BottomNav: FC = () => {
@@ -21,12 +20,13 @@ export const BottomNav: FC = () => {
   const location = useLocation();
 
   return (
-    <nav className="mobile-nav">
+    <nav className="mobile-nav" aria-label="Hoofdnavigatie">
       {items.map(item => (
         <button
           key={item.path}
           className={`mobile-nav-item${location.pathname === item.path ? ' active' : ''}`}
           onClick={() => navigate(item.path)}
+          aria-current={location.pathname === item.path ? 'page' : undefined}
         >
           <item.icon />
           {item.label}

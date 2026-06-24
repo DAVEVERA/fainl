@@ -1,5 +1,5 @@
 import { FC, ReactNode, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { BottomNav } from './BottomNav';
@@ -19,11 +19,13 @@ export const AppShell: FC<AppShellProps> = ({
   onNewChat,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { authSession, handleLogout } = useAuth();
 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() =>
     localStorage.getItem('fainl_sidebar_collapsed') === 'true'
   );
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [darkMode, setDarkMode] = useState(() => {
     const stored = localStorage.getItem('fainl_theme');
@@ -35,6 +37,10 @@ export const AppShell: FC<AppShellProps> = ({
     document.documentElement.classList.toggle('dark', darkMode);
     localStorage.setItem('fainl_theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const toggleSidebar = () => {
     setSidebarCollapsed(prev => {
@@ -59,14 +65,22 @@ export const AppShell: FC<AppShellProps> = ({
       >
         Direct naar inhoud
       </a>
+
+      {/* Mobile overlay */}
+      <div
+        className={`sidebar-overlay${mobileMenuOpen ? ' visible' : ''}`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
       <Sidebar
         collapsed={sidebarCollapsed}
+        mobileOpen={mobileMenuOpen}
         onToggle={toggleSidebar}
         darkMode={darkMode}
         onToggleTheme={() => setDarkMode(d => !d)}
         history={history}
-        onLoadSession={(s) => { onLoadSession(s); navigate('/mission'); }}
-        onNewChat={onNewChat}
+        onLoadSession={(s) => { onLoadSession(s); navigate('/mission'); setMobileMenuOpen(false); }}
+        onNewChat={() => { onNewChat(); setMobileMenuOpen(false); }}
         userEmail={userEmail}
         userName={userName}
         isLoggedIn={!!authSession}
@@ -74,7 +88,7 @@ export const AppShell: FC<AppShellProps> = ({
       />
 
       <div className={`main-canvas${sidebarCollapsed ? ' sidebar-collapsed' : ''}`}>
-        <TopBar />
+        <TopBar onMenuOpen={() => setMobileMenuOpen(true)} />
         <div id="main-content" role="main" aria-live="polite">
           {children}
         </div>

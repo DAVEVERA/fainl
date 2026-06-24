@@ -39,6 +39,7 @@ const CompareVsChatGPTPage = lazy(() => import("./components/CompareVsChatGPTPag
 const CompareMultiModelPage = lazy(() => import("./components/CompareMultiModelPage").then(m => ({ default: m.CompareMultiModelPage })));
 const AuthCallbackPage = lazy(() => import("./components/AuthCallbackPage").then(m => ({ default: m.AuthCallbackPage })));
 const NotFoundPage = lazy(() => import("./components/NotFoundPage").then(m => ({ default: m.NotFoundPage })));
+const InclusionPage = lazy(() => import("./components/InclusionPage").then(m => ({ default: m.InclusionPage })));
 import { Zap as ZapIcon } from "lucide-react";
 import { supabase } from "./services/supabaseClient";
 import {
@@ -239,15 +240,26 @@ const App: FC = () => {
   const [showOutofCreditsUpsell, setShowOutofCreditsUpsell] = useState(false);
   const [authSession, setAuthSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<{ credits_remaining: number; total_turns_used: number; is_lifetime: boolean } | null>(null);
+  const [inclusionStatus, setInclusionStatus] = useState<{ is_inclusion: boolean; remaining?: number; monthly_limit?: number } | null>(null);
+
+  const fetchInclusionStatus = async (userId?: string) => {
+    if (!userId) { setInclusionStatus(null); return; }
+    try {
+      const { data } = await supabase.rpc('get_inclusion_status', { p_user_id: userId });
+      if (data) setInclusionStatus(data);
+    } catch { setInclusionStatus(null); }
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setAuthSession(session);
       fetchProfile(session?.user?.id);
+      fetchInclusionStatus(session?.user?.id);
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setAuthSession(session);
       fetchProfile(session?.user?.id);
+      fetchInclusionStatus(session?.user?.id);
     });
     return () => subscription.unsubscribe();
   }, []);
@@ -419,8 +431,21 @@ const App: FC = () => {
       return;
     }
 
-    // Deduct credit atomically server-side via RPC to prevent race conditions
-    if (authSession?.user && profile) {
+    // Deduct credit — inclusion users use inclusion credits, others use regular credits
+    if (authSession?.user && inclusionStatus?.is_inclusion) {
+      const { data: incData, error: incError } = await supabase.rpc('use_inclusion_credit', {
+        p_user_id: authSession.user.id,
+      });
+      if (incError || !incData?.success) {
+        setSession((prev: SessionState) => ({
+          ...prev,
+          stage: WorkflowStage.ERROR,
+          error: incData?.error || "Inclusiecredits niet beschikbaar.",
+        }));
+        return;
+      }
+      setInclusionStatus(prev => prev ? { ...prev, remaining: incData.remaining } : prev);
+    } else if (authSession?.user && profile) {
       const { data: rpcData, error: rpcError } = await supabase.rpc('deduct_credit', {
         p_user_id: authSession.user.id,
       });
@@ -513,7 +538,8 @@ const App: FC = () => {
 
     const hasCredits = currentCredits > 0;
     const hasTurnsRemaining = currentTurns < config.totalTurnsAllowed;
-    const isAllowed = isLifetime || hasTurnsRemaining || hasCredits;
+    const isInclusionUser = inclusionStatus?.is_inclusion && (inclusionStatus.remaining ?? 0) > 0;
+    const isAllowed = isLifetime || isInclusionUser || hasTurnsRemaining || hasCredits;
 
     if (!isAllowed) {
       // After 2 free anonymous turns, force login/registration
@@ -898,6 +924,9 @@ const App: FC = () => {
           <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/ai-voorwaarden" element={<AiTermsPage />} />
           <Route path="/cookies" element={<CookieDeclarationPage />} />
+
+          {/* Inclusie */}
+          <Route path="/inclusie" element={<InclusionPage />} />
 
           {/* Payment Success — Stripe redirects here after checkout */}
           <Route
