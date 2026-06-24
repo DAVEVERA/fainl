@@ -15,6 +15,7 @@ export enum ModelProvider {
   NEMOTRON = "Nemotron 3 Nano",
   GEMMA = "Gemma 3 12B",
   GLM = "GLM 4.5 Air",
+  PERPLEXITY = "Perplexity",
 }
 
 export interface CouncilMember {
@@ -81,7 +82,7 @@ export interface AppConfig {
   activeCouncil: CouncilMember[];
   customNodes: CouncilMember[];
   chairmanId: string;
-  modelCount: 3 | 5;
+  modelCount: 3 | 7;
   // Usage Tracking
   turnsUsed: number;
   creditsRemaining: number;

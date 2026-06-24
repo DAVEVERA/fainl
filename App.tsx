@@ -355,7 +355,7 @@ const App: FC = () => {
     activeCouncil: DEFAULT_COUNCIL,
     customNodes: [] as any[],
     chairmanId: DEFAULT_CHAIRMAN.id,
-    modelCount: 3 as 3 | 5,
+    modelCount: 7 as 3 | 7,
     turnsUsed: 0,
     creditsRemaining: 0,
     isLifetime: false,
@@ -373,7 +373,7 @@ const App: FC = () => {
         return merged.activeCouncil.map((m: any) => defaultById[m.id] ? { ...m, modelId: defaultById[m.id].modelId, provider: defaultById[m.id].provider } : m);
       })(),
       customNodes: Array.isArray(merged.customNodes) ? merged.customNodes : [],
-      modelCount: merged.modelCount === 5 ? 5 : 3,
+      modelCount: merged.modelCount === 3 ? 3 : 7,
       turnsUsed: Number.isFinite(merged.turnsUsed) ? merged.turnsUsed : 0,
       creditsRemaining: Number.isFinite(merged.creditsRemaining) ? merged.creditsRemaining : 0,
       totalTurnsAllowed: Number.isFinite(merged.totalTurnsAllowed) ? merged.totalTurnsAllowed : 2,

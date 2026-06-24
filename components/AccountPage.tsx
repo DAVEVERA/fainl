@@ -105,7 +105,7 @@ export const AccountPage: FC<AccountPageProps> = ({
     onUpdateConfig({ ...config, activeCouncil: DEFAULT_COUNCIL, modelCount: 3 });
   };
 
-  const handleSetProtocol = (count: 3 | 5) => {
+  const handleSetProtocol = (count: 3 | 7) => {
     const preset = PRESETS.find(p => p.members.length === count);
     if (!preset) return;
     onUpdateConfig({ ...config, modelCount: count, activeCouncil: preset.members });
@@ -215,7 +215,7 @@ export const AccountPage: FC<AccountPageProps> = ({
               <h3 className="text-lg md:text-xl font-black uppercase tracking-tight text-black dark:text-white mb-2">Raadsformatie</h3>
               <p className="text-sm text-black/50 dark:text-white/40 font-bold mb-5">Kies het aantal AI-raadsleden dat jouw vragen analyseert.</p>
               <div className="flex gap-3">
-                {([3, 5] as const).map(n => (
+                {([7, 3] as const).map(n => (
                   <button
                     key={n}
                     onClick={() => handleSetProtocol(n)}

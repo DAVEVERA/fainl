@@ -11,6 +11,7 @@ const SECRETS: Record<string, string | undefined> = {
   deepseek:   Deno.env.get('DEEPSEEK_API_KEY'),
   mistral:    Deno.env.get('MISTRAL_API_KEY'),
   openrouter: Deno.env.get('OPENROUTER_API_KEY'),
+  perplexity: Deno.env.get('PERPLEXITY_API_KEY'),
   nemotron:   Deno.env.get('NEMOTRON_API_KEY'),
   glm:        Deno.env.get('GLM_API_KEY'),
 }
@@ -23,6 +24,7 @@ const BASE_URLS: Record<string, string> = {
   deepseek:   'https://api.deepseek.com',
   mistral:    'https://api.mistral.ai/v1',
   openrouter: 'https://openrouter.ai/api/v1',
+  perplexity: 'https://api.perplexity.ai',
   nemotron:   'https://integrate.api.nvidia.com/v1',
   glm:        'https://open.bigmodel.cn/api/paas/v4',
 }

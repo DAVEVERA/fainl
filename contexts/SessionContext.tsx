@@ -85,7 +85,7 @@ export const normalizeConfig = (raw: any): AppConfig => {
       );
     })(),
     customNodes: Array.isArray(merged.customNodes) ? merged.customNodes : [],
-    modelCount: merged.modelCount === 5 ? 5 : 3,
+    modelCount: merged.modelCount === 3 ? 3 : 7,
     turnsUsed: Number.isFinite(merged.turnsUsed) ? merged.turnsUsed : 0,
     creditsRemaining: Number.isFinite(merged.creditsRemaining)
       ? merged.creditsRemaining

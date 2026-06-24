@@ -18,6 +18,7 @@ const PROXIED_PROVIDERS = new Set<ModelProvider>([
   ModelProvider.OPENROUTER,
   ModelProvider.NEMOTRON,
   ModelProvider.GLM,
+  ModelProvider.PERPLEXITY,
 ]);
 
 const PROVIDER_STRING: Partial<Record<ModelProvider, string>> = {
@@ -30,6 +31,7 @@ const PROVIDER_STRING: Partial<Record<ModelProvider, string>> = {
   [ModelProvider.OPENROUTER]:'openrouter',
   [ModelProvider.NEMOTRON]:  'nemotron',
   [ModelProvider.GLM]:       'glm',
+  [ModelProvider.PERPLEXITY]:'perplexity',
 };
 
 export class UnifiedCouncilService {

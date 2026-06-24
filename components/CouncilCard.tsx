@@ -8,6 +8,10 @@ const LOADING_TEXT: Record<string, string> = {
   'node-alpha-fact': 'Controleert feiten en bronnen…',
   'node-beta-logic': 'Ontleedt de logica van je vraag…',
   'node-gamma-vision': 'Zoekt het onverwachte perspectief…',
+  'node-delta-deep': 'Graaft naar diepere patronen…',
+  'node-epsilon-seek': 'Verifieert met actuele bronnen…',
+  'node-zeta-risk': 'Analyseert risico’s en zwakke plekken…',
+  'node-eta-synth': 'Zoekt synthese tussen standpunten…',
 };
 
 const SECTION_BADGE: Record<string, string> = {
