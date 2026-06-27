@@ -5,7 +5,7 @@ import { getPostAuthDestination } from '../services/authRedirect';
 import { supabase } from '../services/supabaseClient';
 
 const waitForSession = async () => {
-  for (let attempt = 0; attempt < 10; attempt += 1) {
+  for (let attempt = 0; attempt < 20; attempt += 1) {
     const {
       data: { session },
       error,
@@ -14,7 +14,7 @@ const waitForSession = async () => {
     if (error) throw error;
     if (session) return session;
 
-    await new Promise((resolve) => setTimeout(resolve, 150));
+    await new Promise((resolve) => setTimeout(resolve, 250));
   }
 
   return null;
